@@ -1,7 +1,9 @@
 .dropdown{
     cursor: pointer;
 }
-
+.leftPart{
+    display: flex;
+}
 /*########## mobile responsive ########*/
 @media(max-width: 768px){
     
