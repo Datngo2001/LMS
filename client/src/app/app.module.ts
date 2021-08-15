@@ -8,11 +8,16 @@ import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { StudentComponent } from './student/student.component';
+import { CourseComponent } from './Student/course/course.component';
+import { CourseService } from './shared/course.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    StudentComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
