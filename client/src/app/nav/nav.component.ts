@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_model/user';
 import { AccountService } from '../_services/account.service';
@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
   currentUser$: Observable<User>;
 
   constructor(private accountService: AccountService, private router: Router
-    /* , private toastr: ToastrService*/) { }
+    , private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.currentUser$ = this.accountService.currentUser$;

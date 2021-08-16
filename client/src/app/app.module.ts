@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,7 @@ import { SharedModule } from './_modules/shared.module';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrrorComponent } from './errors/server-errror/server-errror.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ErrorInterceptor } from './_interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     FormsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
