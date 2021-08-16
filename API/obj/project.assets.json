@@ -1586,11 +1586,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\supod\\Desktop\\LMS\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\supod\\Desktop\\LMS\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "c:\\Users\\supod\\Desktop\\LMS\\API\\API.csproj",
+      "projectPath": "C:\\Users\\supod\\Desktop\\LMS\\api\\API.csproj",
       "packagesPath": "C:\\Users\\supod\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\supod\\Desktop\\LMS\\API\\obj\\",
+      "outputPath": "C:\\Users\\supod\\Desktop\\LMS\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\supod\\AppData\\Roaming\\NuGet\\NuGet.Config",

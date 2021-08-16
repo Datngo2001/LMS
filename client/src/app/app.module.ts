@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './_modules/shared.module';
@@ -14,6 +15,11 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrrorComponent } from './errors/server-errror/server-errror.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptor/error.interceptor';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { StudentComponent } from './student/student.component';
+import { CourseComponent } from './Student/course/course.component';
+import { CourseService } from './shared/course.service';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +29,9 @@ import { ErrorInterceptor } from './_interceptor/error.interceptor';
     HomeComponent,
     NotFoundComponent,
     ServerErrrorComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    StudentComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,8 @@ import { ErrorInterceptor } from './_interceptor/error.interceptor';
     SharedModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    CourseService
   ],
   bootstrap: [AppComponent]
 })
