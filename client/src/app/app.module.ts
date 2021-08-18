@@ -19,6 +19,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './Student/course/course.component';
 import { CourseService } from './shared/course.service';
+import { JwtInterceptor } from './_interceptor/jwt.interceptor';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { CourseService } from './shared/course.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     CourseService
   ],
   bootstrap: [AppComponent]
