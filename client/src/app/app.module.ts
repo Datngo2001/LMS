@@ -18,7 +18,7 @@ import { ErrorInterceptor } from './_interceptor/error.interceptor';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './Student/course/course.component';
-import { CourseService } from './shared/course.service';
+import { CourseService } from './_services/course.service';
 import { JwtInterceptor } from './_interceptor/jwt.interceptor';
 
 
