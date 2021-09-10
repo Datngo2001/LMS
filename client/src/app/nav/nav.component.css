@@ -4,6 +4,9 @@
 .leftPart{
     display: flex;
 }
+a.dropdown-item:hover{
+    color: white;
+}
 /*########## mobile responsive ########*/
 @media(max-width: 768px){
     
