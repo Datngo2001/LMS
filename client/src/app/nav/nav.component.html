@@ -1,8 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <div class="leftPart">
-            <a class="navbar-brand" routerLink="/">LMS</a>
-            <ul class="navbar-nav mb-2 mb-md-0">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">LMS</a>
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+            <ul class="navbar-nav me-auto">
                 <ng-container *ngIf="currentUser$ | async">
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/members" routerLinkActive="active">My Courses</a>
@@ -15,8 +19,6 @@
                     </li>
                 </ng-container>
             </ul>
-        </div>
-        <div class="rightPart">
             <div class="dropdown" *ngIf="(currentUser$ | async) as user" dropdown>
                 <a class="dropdown-toggle" dropdownToggle>Welcom {{user.username | titlecase}}</a>
                 <div class="dropdown-menu" *dropdownMenu>

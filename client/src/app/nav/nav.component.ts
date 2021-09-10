@@ -12,6 +12,10 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
 
+  //UI variable
+  isCollapsed = true;
+
+  //Business variable
   model: any = {};
   currentUser$: Observable<User>;
 

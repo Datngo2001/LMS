@@ -15,7 +15,6 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrrorComponent } from './errors/server-errror/server-errror.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptor/error.interceptor';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './Student/course/course.component';
 import { CourseService } from './_services/course.service';
