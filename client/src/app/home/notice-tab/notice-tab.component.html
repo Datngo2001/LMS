@@ -1,0 +1,19 @@
+<div class="card mb-3">
+  <h4 class="card-header mb-2">Notifications</h4>
+  <ng-container *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissible]="true" (onClosed)="onClosed(alert)" class="ml-1 mr-1">
+      <h4 class="alert-heading">{{alert.type}}!</h4>
+      {{ alert.msg }}
+    </alert>
+  </ng-container>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
