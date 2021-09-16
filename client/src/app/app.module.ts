@@ -15,15 +15,12 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrrorComponent } from './errors/server-errror/server-errror.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptor/error.interceptor';
-import { StudentComponent } from './student/student.component';
-import { CourseComponent } from './Student/course/course.component';
 import { CourseService } from './_services/course.service';
 import { JwtInterceptor } from './_interceptor/jwt.interceptor';
-import { CoursesTabComponent } from './student-dash-board/courses-tab/courses-tab.component';
-import { DeadlinesTabComponent } from './student-dash-board/deadlines-tab/deadlines-tab.component'
-import { NoticeTabComponent } from './student-dash-board/notice-tab/notice-tab.component';
-import { StudentDashBoardComponent } from './student-dash-board/student-dash-board.component';
-
+import { CoursesTabComponent } from './dash-board/courses-tab/courses-tab.component';
+import { DeadlinesTabComponent } from './dash-board/deadlines-tab/deadlines-tab.component'
+import { NoticeTabComponent } from './dash-board/notice-tab/notice-tab.component';
+import { DashBoardComponent } from './dash-board/dash-board.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +31,10 @@ import { StudentDashBoardComponent } from './student-dash-board/student-dash-boa
     NotFoundComponent,
     ServerErrrorComponent,
     TestErrorsComponent,
-    StudentComponent,
-    CourseComponent,
     CoursesTabComponent,
     DeadlinesTabComponent,
     NoticeTabComponent,
-    StudentDashBoardComponent,
+    DashBoardComponent,
   ],
   imports: [
     BrowserModule,
