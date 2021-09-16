@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesTabComponent implements OnInit {
 
-  courses = [1, 2, 3, 4]
+  courses = [1, 2, 3, 4, 5]
 
   constructor() { }
 
@@ -15,4 +15,7 @@ export class CoursesTabComponent implements OnInit {
 
   }
 
+  onScroll(): void {
+    console.log("Scrolled")
+  }
 }

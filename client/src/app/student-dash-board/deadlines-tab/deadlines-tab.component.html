@@ -1,0 +1,20 @@
+<table class="table table-hover">
+    <thead class="">
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Course</th>
+            <th scope="col">Deadline</th>
+            <th scope="col" id="hideInMobile">Time remaining</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let deadline of deadlines">
+            <tr class="table-light" routerLink="/members">
+                <th scope="row">Light</th>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td id="hideInMobile">Column content</td>
+            </tr>            
+        </ng-container>
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+<div class="card mb-3">
+  <h4 class="card-header p-3" type="button" (click)="isNotifyCollapsed = !isNotifyCollapsed"
+    [attr.aria-expanded]="!isNotifyCollapsed" aria-controls="collapseBasic">Notifications</h4>
+  <div id="collapseBasic" [collapse]="isNotifyCollapsed" [isAnimated]="true" class="p-1 pt-2">
+    <ng-container *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissible]="true" (onClosed)="onClosed(alert)">
+        <h4 class="alert-heading">{{alert.type}}!</h4>
+        {{ alert.msg }}
+      </alert>
+    </ng-container>
+  </div>
+</div>

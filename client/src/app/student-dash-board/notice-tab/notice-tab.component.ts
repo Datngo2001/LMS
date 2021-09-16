@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticeTabComponent implements OnInit {
 
+  isNotifyCollapsed = false;
+
   defaultAlerts: any[] = [
     {
       type: 'success',
@@ -22,7 +24,7 @@ export class NoticeTabComponent implements OnInit {
     }
   ];
   alerts = this.defaultAlerts;
- 
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class NoticeTabComponent implements OnInit {
   reset(): void {
     this.alerts = this.defaultAlerts;
   }
- 
+
   onClosed(dismissedAlert: any): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }

@@ -7,7 +7,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertModule } from 'ngx-bootstrap/alert';
 // Toaster link: https://www.npmjs.com/package/ngx-toastr
 import { ToastrModule } from 'ngx-toastr';
-
+// Infinite Scroll: https://www.npmjs.com/package/ngx-infinite-scroll
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -20,14 +21,16 @@ import { ToastrModule } from 'ngx-toastr';
     AlertModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    InfiniteScrollModule
   ],
   exports: [
     BsDropdownModule,
     CollapseModule,
     TabsModule,
     AlertModule,
-    ToastrModule
+    ToastrModule,
+    InfiniteScrollModule
   ]
 })
 export class SharedModule { }
