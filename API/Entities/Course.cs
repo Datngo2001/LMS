@@ -18,7 +18,8 @@ namespace API.Entities
         public int Credits { get; set; }
 
         [Required]
-        public int SId { get; set; }
         public Student Student { get; set; }
+        public int StudentId { get; set; }
+        
     }
 }
