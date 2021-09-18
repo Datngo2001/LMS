@@ -21,6 +21,15 @@ import { CoursesTabComponent } from './dash-board/courses-tab/courses-tab.compon
 import { DeadlinesTabComponent } from './dash-board/deadlines-tab/deadlines-tab.component'
 import { NoticeTabComponent } from './dash-board/notice-tab/notice-tab.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+import { CourseComponent } from './course/course.component';
+import { LessonComponent } from './course/lesson/lesson.component';
+import { OverviewComponent } from './course/overview/overview.component';
+import { ScoreComponent } from './course/score/score.component';
+import { VideoTypeComponent } from './course/lesson/video-type/video-type.component';
+import { FileTypeComponent } from './course/lesson/file-type/file-type.component';
+import { SafeEmbedPipe } from './_pipe/safe-embed.pipe';
+import { MessageTypeComponent } from './course/lesson/message-type/message-type.component';
+import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignment-type.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +44,15 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
     DeadlinesTabComponent,
     NoticeTabComponent,
     DashBoardComponent,
+    CourseComponent,
+    LessonComponent,
+    OverviewComponent,
+    ScoreComponent,
+    VideoTypeComponent,
+    FileTypeComponent,
+    SafeEmbedPipe,
+    MessageTypeComponent,
+    AssignmentTypeComponent,
   ],
   imports: [
     BrowserModule,

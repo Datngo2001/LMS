@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 // Toaster link: https://www.npmjs.com/package/ngx-toastr
 import { ToastrModule } from 'ngx-toastr';
 // Infinite Scroll: https://www.npmjs.com/package/ngx-infinite-scroll
@@ -19,6 +20,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CollapseModule.forRoot(),
     TabsModule.forRoot(),
     AlertModule.forRoot(),
+    AccordionModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
@@ -29,6 +31,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CollapseModule,
     TabsModule,
     AlertModule,
+    AccordionModule,
     ToastrModule,
     InfiniteScrollModule
   ]

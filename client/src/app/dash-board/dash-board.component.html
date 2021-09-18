@@ -1,20 +1,19 @@
-<div class="container d-flex justify-content-between flex-wrap align-items-baseline">
-    <!-- *ngIf="(currentUser$ | async)" -->
+<div class="container d-flex justify-content-between flex-wrap align-items-baseline mt-5">
     <tabset class="row flex-grow-1 courseAndDeadline" [justified]="true">
         <tab>
             <ng-template tabHeading>
                 <h4 class="">Courses</h4>
             </ng-template>
-            <courses-tab></courses-tab>
+            <app-courses-tab></app-courses-tab>
         </tab>
         <tab>
             <ng-template tabHeading>
                 <h4 class="">Deadlines</h4>
             </ng-template>
-            <deadlines-tab></deadlines-tab>
+            <app-deadlines-tab></app-deadlines-tab>
         </tab>
     </tabset>
     <div class="row notice">
-        <notice-tab></notice-tab>
+        <app-notice-tab></app-notice-tab>
     </div>
 </div>

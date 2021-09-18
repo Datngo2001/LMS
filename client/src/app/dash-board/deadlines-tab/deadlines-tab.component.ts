@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'deadlines-tab',
+  selector: 'app-deadlines-tab',
   templateUrl: './deadlines-tab.component.html',
   styleUrls: ['./deadlines-tab.component.css']
 })

@@ -1,0 +1,25 @@
+<accordion-group class="mb-1">
+    <button class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none align-items-baseline"
+        accordion-heading type="button" (isOpenChange)="isOpen = !isOpen">
+        <h5 class="pull-left float-left mx-0 my-0">Lesson 1: Intro</h5>
+        <span class="badge badge-secondary bg-secondary float-right pull-right">
+            &#9660;
+        </span>
+    </button>
+    <div class="list-group">
+        <ng-container *ngFor="let content of contents">
+            <ng-container *ngIf="content.type == 'video'">
+                <app-video-type [content]="content"></app-video-type>
+            </ng-container>
+            <ng-container *ngIf="content.type == 'file'">
+                <app-file-type [content]="content"></app-file-type>
+            </ng-container>
+            <ng-container *ngIf="content.type == 'message'">
+                <app-message-type [content]="content"></app-message-type>
+            </ng-container>
+            <ng-container *ngIf="content.type == 'assignment'">
+                <app-assignment-type [content]="content"></app-assignment-type>
+            </ng-container>
+        </ng-container>
+    </div>
+</accordion-group>

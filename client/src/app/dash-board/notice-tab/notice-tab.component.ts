@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'notice-tab',
+  selector: 'app-notice-tab',
   templateUrl: './notice-tab.component.html',
   styleUrls: ['./notice-tab.component.css']
 })

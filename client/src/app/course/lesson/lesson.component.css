@@ -1,0 +1,6 @@
+
+/* refernce at https://github.com/valor-software/ngx-bootstrap/issues/2035 */
+:host /deep/ .panel-body.card-block.card-body {
+    padding: 0 0 0 0 !important;
+    border: none;
+}

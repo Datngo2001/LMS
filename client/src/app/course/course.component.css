@@ -1,0 +1,51 @@
+.courseContent, .overview, .score{
+    width: 60%; 
+    margin: auto;
+    margin-top: 30px; 
+}
+h6{
+    margin: none;
+}
+
+.title{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.title img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.title .name{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    color: white;
+    padding: 5px 50px;
+    word-wrap: normal;
+    max-width: 70%;
+}
+.title .info{
+    position: absolute;
+    top: 80px;
+    left: 16px;
+    max-width: 70%;
+}
+
+/*########## mobile responsive ########*/
+@media(max-width: 600px){
+    .courseContent, .overview, .score{
+        width: 100%; 
+        margin-top: 10px;
+    }
+    .title .name, .title .class{
+        max-width: 100%;
+    }
+    /* For the tab */
+    :host /deep/ a.nav-link{
+        padding: 5px 10px;
+    }
+}
