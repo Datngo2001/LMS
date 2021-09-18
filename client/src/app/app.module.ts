@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +30,7 @@ import { FileTypeComponent } from './course/lesson/file-type/file-type.component
 import { SafeEmbedPipe } from './_pipe/safe-embed.pipe';
 import { MessageTypeComponent } from './course/lesson/message-type/message-type.component';
 import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignment-type.component';
+import { SubmitComponent } from './submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignm
     SafeEmbedPipe,
     MessageTypeComponent,
     AssignmentTypeComponent,
+    SubmitComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignm
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: [

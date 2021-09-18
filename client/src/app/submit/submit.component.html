@@ -1,0 +1,43 @@
+<div class="container d-flex flex-wrap justify-content-between mt-5">
+    <div class="description">
+        <h2>Example body text</h2>
+        <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis
+            dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+        <p><small>This line of text is meant to be treated as fine print.</small></p>
+        <p>The following is <strong>rendered as bold text</strong>.</p>
+        <p>The following is <em>rendered as italicized text</em>.</p>
+        <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+    </div>
+    <div class="card mb-3 submitPanel">
+        <h4 class="card-header">Computer Architecture and Asembly language</h4>
+        <div class="card-body">
+            <h5 class="card-title">Nhom_01_CLA</h5>
+            <h6 class="card-subtitle text-muted">2020 - 2021</h6>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Status:
+                <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Score:
+                <span class="badge bg-primary rounded-pill">2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Time remaining:
+                <span class="badge bg-primary rounded-pill">1</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Last modify:
+                <span class="badge bg-primary rounded-pill">1</span>
+            </li>
+        </ul>
+        <form #demoForm="ngForm" class="submitForm">
+            <file-upload [(ngModel)]="uploadedFiles" name="files" fileslimit="2"></file-upload>
+            <fieldset class="form-group buttonGroup d-flex justify-content-around">
+                <button type="submit" class="btn btn-primary w-25">Submit</button>
+                <button type="button" class="btn btn-primary w-25">Delete</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

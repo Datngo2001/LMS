@@ -6,6 +6,7 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { HomeComponent } from './home/home.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { CourseComponent } from './course/course.component';
+import { SubmitComponent } from './submit/submit.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrrorComponent },
   { path: 'dashboard', component: DashBoardComponent, pathMatch: 'full' },
-  { path: 'course', component: CourseComponent }
+  { path: 'course', component: CourseComponent },
+  { path: 'submit', component: SubmitComponent }
 ]
 
 @NgModule({

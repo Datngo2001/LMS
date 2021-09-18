@@ -1,7 +1,8 @@
-<a [href]="content.link" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start">
+<a routerLink="/submit" routerLinkActive="active" target="_blank"
+    class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between align-items-baseline">
         <h5 class="mb-1 text-danger">{{content.type | titlecase}}</h5>
-        <i class="fa fa-paper-plane text-danger" aria-hidden="true"></i>
+        <i class="fas fa-clipboard text-danger" aria-hidden="true"></i>
     </div>
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
         blandit.</p>

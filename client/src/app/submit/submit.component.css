@@ -1,0 +1,15 @@
+.description{
+    width: 60%;
+    
+}
+.submitPanel{
+    width: 40%;
+}
+
+
+/*########## mobile responsive ########*/
+@media(max-width: 600px){
+    .description,.submitPanel{
+        width: 100%;
+    }
+}

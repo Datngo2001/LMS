@@ -10,6 +10,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ToastrModule } from 'ngx-toastr';
 // Infinite Scroll: https://www.npmjs.com/package/ngx-infinite-scroll
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+//FileUploadModule: https://www.npmjs.com/package/@iplab/ngx-file-upload
+import { FileUploadModule } from '@iplab/ngx-file-upload';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    FileUploadModule
   ],
   exports: [
     BsDropdownModule,
@@ -33,7 +36,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AlertModule,
     AccordionModule,
     ToastrModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    FileUploadModule
   ]
 })
 export class SharedModule { }
