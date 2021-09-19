@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
@@ -8,10 +9,11 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  //Business variable
   model: any = {};
-  @Input() usersFromHomeComp: any;
-  @Output() cancelRegister = new EventEmitter();
-  constructor(private accountService: AccountService, private toastr: ToastrService) { }
+
+  constructor(public bsModalRef: BsModalRef, private accountService: AccountService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,6 @@ export class RegisterComponent implements OnInit {
   }
 
   cancel() {
-    this.cancelRegister.emit(false);
+    this.bsModalRef.hide();
   }
 }

@@ -33,14 +33,10 @@
                 </ul>
             </div>
 
-            <form *ngIf="!(currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
-                autocomplete="off">
-                <input name="Username" [(ngModel)]="model.username" class="form-control me-2 mr-2" type="text"
-                    placeholder="Username">
-                <input name="Password" [(ngModel)]="model.password" class="form-control me-2 mr-2" type="password"
-                    placeholder="Password">
-                <button class="btn btn-success" type="submit">Login</button>
-            </form>
+            <button *ngIf="!(currentUser$ | async)" type="button" class="btn btn-primary mr-2"
+                (click)="openLoginModal()">Login</button>
+            <button *ngIf="!(currentUser$ | async)" type="button" class="btn btn-primary"
+                (click)="openRegisterModal()">Register</button>
         </div>
     </div>
 </nav>

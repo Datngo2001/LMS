@@ -31,6 +31,7 @@ import { SafeEmbedPipe } from './_pipe/safe-embed.pipe';
 import { MessageTypeComponent } from './course/lesson/message-type/message-type.component';
 import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignment-type.component';
 import { SubmitComponent } from './submit/submit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SubmitComponent } from './submit/submit.component';
     MessageTypeComponent,
     AssignmentTypeComponent,
     SubmitComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

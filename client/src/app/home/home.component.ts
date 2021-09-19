@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import { RegisterComponent } from '../register/register.component';
 import { User } from '../_model/user';
 import { AccountService } from '../_services/account.service';
 
@@ -10,21 +12,21 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  registerMode = false;
 
+  //UI variable
+  registerMode = false;
+  registerModal?: BsModalRef;
+
+  //Business variable
   currentUser$: Observable<User>;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private modalService: BsModalService, private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.currentUser$ = this.accountService.currentUser$;
   }
 
-  registerToggle() {
-    this.registerMode = !this.registerMode;
-  }
-
-  cancelRegisterMode(event: boolean){
-    this.registerMode = event;
+  openRegisterModal() {
+    this.registerModal = this.modalService.show(RegisterComponent);
   }
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_model/user';
 import { AccountService } from '../_services/account.service';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-nav',
@@ -14,22 +16,24 @@ export class NavComponent implements OnInit {
 
   //UI variable
   isCollapsed = true;
+  loginModal?: BsModalRef;
+  registerModal?: BsModalRef;
 
   //Business variable
-  model: any = {};
   currentUser$: Observable<User>;
 
-  constructor(private accountService: AccountService, private router: Router
-    , private toastr: ToastrService) { }
+  constructor(private modalService: BsModalService, private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    this.currentUser$ = this.accountService.currentUser$;
+    // observe the current user at user service
+    this.currentUser$ = this.accountService.currentUser$
   }
 
-  login() {
-    this.accountService.login(this.model).subscribe(response => {
-      console.log("ok")
-    })
+  openLoginModal() {
+    this.loginModal = this.modalService.show(LoginComponent);
+  }
+  openRegisterModal() {
+    this.registerModal = this.modalService.show(RegisterComponent);
   }
 
   logout() {
