@@ -17,10 +17,10 @@ namespace API.Service
         {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
-        public string CreateToken(AppUser user)
+        public string CreateToken(Account user)
         {
             var claim = new List<Claim>(){
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Username)
             };
 
             var creds = new SigningCredentials(_key,
