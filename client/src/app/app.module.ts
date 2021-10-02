@@ -32,6 +32,8 @@ import { MessageTypeComponent } from './course/lesson/message-type/message-type.
 import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignment-type.component';
 import { SubmitComponent } from './submit/submit.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { LoginComponent } from './login/login.component';
     AssignmentTypeComponent,
     SubmitComponent,
     LoginComponent,
+    ProfileComponent,
+    TeacherPanelComponent,
   ],
   imports: [
     BrowserModule,
