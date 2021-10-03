@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,12 +22,12 @@ namespace API.Controllers
             this._context = context;
         }
         Account account = new Account();
-             
+
         [HttpPost("create")]
-        public async Task<ActionResult<Student>> CreateStudent(Student student) 
+        public async Task<ActionResult<Student>> CreateStudent(Student student)
         {
-            if(await StudentExists(student.Id)) return BadRequest("The Identity of Student is exist");
-            
+            if (await StudentExists(student.Id)) return BadRequest("The Identity of Student is exist");
+
             student.Birthday = DateTime.Now;
             student.Start_date = DateTime.Now;
             _context.Students.Add(student);
