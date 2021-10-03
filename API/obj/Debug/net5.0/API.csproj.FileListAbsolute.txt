@@ -347,3 +347,4 @@ C:\Users\hp\source\repos\IT\LMS\API\obj\Debug\net5.0\ref\API.dll
 C:\Users\hp\source\repos\IT\LMS\API\obj\Debug\net5.0\API.pdb
 C:\Users\hp\source\repos\IT\LMS\API\obj\Debug\net5.0\API.genruntimeconfig.cache
 >>>>>>> master
+C:\Users\supod\Desktop\LMS\api\bin\Debug\net5.0\Data\UserSeedData.json

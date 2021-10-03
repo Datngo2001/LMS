@@ -1,0 +1,42 @@
+[
+    {
+        "UserName": "datngo2001",
+        "fname": "Dat",
+        "lname": "Ngo",
+        "gender": "female",
+        "picture": "https://randomuser.me/api/portraits/women/21.jpg",
+        "address": "HCM",
+        "phone": "0926182318",
+        "bdate": "01-01-2001"
+    },
+    {
+        "UserName": "Lydia",
+        "fname": "abc",
+        "lname": "xyz",
+        "gender": "female",
+        "picture": "https://randomuser.me/api/portraits/women/52.jpg",
+        "address": "TienGiang",
+        "phone": "097273121",
+        "bdate": "01-01-2000"
+    },
+    {
+        "UserName": "Tami",
+        "fname": "asd",
+        "lname": "qwe",
+        "gender": "male",
+        "picture": "https://randomuser.me/api/portraits/men/79.jpg",
+        "address": "PhaThiet",
+        "phone": "0927718321",
+        "bdate": "05-02-2000"
+    },
+    {
+        "UserName": "Snider",
+        "fname": "adf",
+        "lname": "qweq",
+        "gender": "male",
+        "picture": "https://randomuser.me/api/portraits/men/4.jpg",
+        "address": "HCM",
+        "phone": "092718281",
+        "bdate": "05-05-2001"
+    }
+]
