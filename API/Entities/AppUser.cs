@@ -7,6 +7,7 @@ namespace API.Entities
     {
         public string fname { get; set; }
         public string lname { get; set; }
+        public string gender { get; set; }
         public string picture { get; set; }
         public string address { get; set; }
         public string phone { get; set; }
