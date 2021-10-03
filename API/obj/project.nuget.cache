@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W5/Ft/AU8bVoT9OYhzboCoTJ4oBqKAVZjluXTfMugRnbwRieYEsHgUTmTurQ6hRID+cOMNOfOmn+lThuKaNe0w==",
+  "dgSpecHash": "KuxIosH6gEJbSUB5FjmbfguTX+eClgM1S0p8rouM1Lav83gRm9M6U4LCmBW3VbizdcTEZ22QxdfYVjW3h87Yeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\supod\\Desktop\\LMS\\api\\API.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,9 @@
     "C:\\Users\\supod\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.8\\microsoft.aspnetcore.authentication.jwtbearer.5.0.8.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.0\\microsoft.aspnetcore.authentication.openidconnect.5.0.0.nupkg.sha512",
+    "C:\\Users\\supod\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.8\\microsoft.aspnetcore.cryptography.internal.5.0.8.nupkg.sha512",
+    "C:\\Users\\supod\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.8\\microsoft.aspnetcore.cryptography.keyderivation.5.0.8.nupkg.sha512",
+    "C:\\Users\\supod\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.8\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.8.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.data.sqlclient\\1.0.19269.1\\microsoft.data.sqlclient.1.0.19269.1.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.8\\microsoft.data.sqlite.core.5.0.8.nupkg.sha512",
@@ -35,6 +38,8 @@
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.dependencymodel\\5.0.0\\microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512",
+    "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.8\\microsoft.extensions.identity.core.5.0.8.nupkg.sha512",
+    "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.8\\microsoft.extensions.identity.stores.5.0.8.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\supod\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
