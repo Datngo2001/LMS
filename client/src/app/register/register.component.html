@@ -10,6 +10,27 @@
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password"
                 placeholder="Password">
         </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group">
+                <input type="text" class="form-control" name="firstname" [(ngModel)]="student.firstname"
+                placeholder="Firstname">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control mr-2" name="lastname" [(ngModel)]="student.lastname"
+                placeholder="Lastname">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="role" [(ngModel)]="model.role" aria-placeholder="Roles">
+            <option value="1">Teacher</option>
+            <option value="2">Student</option>
+          </select>
+        </div>
+
         <div class="form-group text-center">
             <button class="btn btn-success mr-2" type="submit">Register</button>
             <button class="btn btn-default" (click)="cancel()" type="button">Cancel</button>

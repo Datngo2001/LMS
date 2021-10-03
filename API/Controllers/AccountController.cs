@@ -14,7 +14,7 @@ namespace API.Controllers
     public class AccountController : APIController
     {
         private readonly ITokenService _tokenService;
-        public UserManager<AppUser> _userManager { get; }
+        private readonly UserManager<AppUser> _userManager;
         public SignInManager<AppUser> _signInManager { get; }
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager
@@ -50,13 +50,13 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.Users
-                .SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
+                .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
 
             if (user == null) return Unauthorized("Invalid username");
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
-            if(!result.Succeeded) return Unauthorized();
+            if (!result.Succeeded) return Unauthorized();
 
             return new UserDto()
             {

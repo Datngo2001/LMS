@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
-    public class Course
+    public class Major
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public Faculty Faculty { get; set; }
 
-        [Required]
-        public int Credits { get; set; }
-
+        public int FacultyId { get; set; }
 
 
     }
