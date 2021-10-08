@@ -11,9 +11,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : APIController
     {
         private readonly DataContext _context;
 
@@ -23,6 +21,7 @@ namespace API.Controllers
         }
         Account account = new Account();
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("create")]
         public async Task<ActionResult<Student>> CreateStudent(Student student)
         {
@@ -35,6 +34,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         private async Task<bool> StudentExists(int id)
         {
             return await _context.Students.AnyAsync(x => x.Id == id);
