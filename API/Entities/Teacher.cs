@@ -32,9 +32,9 @@ namespace API.Entities
         [Required]
         public DateTime Start_date { get; set; }
 
+        public AppUser User { get; set; }
 
-        public Account Account { get; set; }
-        public int AccountId { get; set; }
+        public int UserId { get; set; }
 
     }
 }

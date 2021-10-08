@@ -2,6 +2,7 @@ using System;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -9,9 +10,11 @@ namespace API.Controllers
     public class BuggyCOntroller : APIController
     {
         private readonly DataContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public BuggyCOntroller(DataContext context)
+        public BuggyCOntroller(DataContext context, UserManager<AppUser> userManager)
         {
+            this._userManager = userManager;
             this._context = context;
         }
 
@@ -23,22 +26,15 @@ namespace API.Controllers
         }
 
         [HttpGet("not-found")]
-        public ActionResult<Account> GetNotFound()
+        public ActionResult<AppUser> GetNotFound()
         {
-            var thing = _context.Accounts.Find(-1);
-            if (thing == null)
-            {
-                return NotFound();
-            }
-            return Ok(thing);
+            return NotFound();
         }
 
         [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
-            var thing = _context.Accounts.Find(-1);
-            var thingToReturn = thing.ToString();
-            return thingToReturn;
+            return GetServerError();
         }
 
         [HttpGet("bad-request")]
