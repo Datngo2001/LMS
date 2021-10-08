@@ -10,7 +10,7 @@ import { User } from '../_model/user';
   providedIn: 'root'
 })
 export class AccountService {
-  private baseUrl = environment.apiUrl1;
+  private baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
@@ -20,14 +20,28 @@ export class AccountService {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((user: User) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
       })
     )
   }
 
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'account/register', model).pipe(
+      map((user: User) => {
+        if (user) {
+          this.setCurrentUser(user);
+        }
+      })
+    )
+  }
+
+
   setCurrentUser(user: User) {
+    user.roles = [];
+    const roles = this.getDecodedToken(user.token).role;
+    Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 
@@ -36,15 +50,7 @@ export class AccountService {
     this.currentUserSource.next(null);
   }
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + 'account/register', model).pipe(
-      map((user: User) => {
-        if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
-        }
-      })
-    )
-
+  getDecodedToken(token) {
+    return JSON.parse(atob(token.split('.')[1]))
   }
 }

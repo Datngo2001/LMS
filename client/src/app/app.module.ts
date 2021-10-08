@@ -34,6 +34,7 @@ import { SubmitComponent } from './submit/submit.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
     LoginComponent,
     ProfileComponent,
     TeacherPanelComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

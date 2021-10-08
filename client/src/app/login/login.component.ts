@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs/internal/Observable';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
 
   constructor(public bsModalRef: BsModalRef, private accountService: AccountService
-    , private toastr: ToastrService) { }
+    , private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe(response => {
       console.log("ok")
       this.bsModalRef.hide()
+      this.router.navigateByUrl("/dashboard");
     })
   }
 
