@@ -38,7 +38,10 @@ namespace API.Controllers
         [HttpGet("mycourse/{id}")]
         public async Task<ActionResult<IEnumerable<Classes>>> GetCourses(int id) {
             //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
-            return await _context.Classes.Include(x => x.Course).Where(s => s.CourseId == id).ToListAsync();
+            return await _context.Classes
+            .Include(x => x.Course)
+            .Where(s => s.CourseId == id)
+            .ToListAsync();
         }
         private async Task<bool> CourseExists(string name)
         {

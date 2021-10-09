@@ -14,14 +14,18 @@ export class TeacherPanelComponent implements OnInit {
   tid: number;
   myClass: any;
   ngOnInit(): void {
+    this.loadMyClass();
   }
-  loadMyCourse() {
+  loadMyClass() {
     this.tid = parseInt(this.route.snapshot.paramMap.get("id"))
-    this.dashService.myCourse(this.tid).subscribe(course => {
-      this.myClass = course;
+    this.dashService.myClass(1).subscribe(classes => {
+      this.myClass = classes;
     })
   }
+  loadDetaiClass() {
+    console.log("oke");
+  }
   createLessons() {
-    return 1
+    return 1;
   }
 }

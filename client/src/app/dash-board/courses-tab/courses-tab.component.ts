@@ -17,11 +17,11 @@ export class CoursesTabComponent implements OnInit {
   constructor(private dashService: DashboardService, private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.loadMyCourse();
   }
   loadMyCourse() {
     this.id = parseInt(this.route.snapshot.paramMap.get("id"))
-    this.dashService.myCourse(this.id).subscribe(course => {
+    this.dashService.myCourse(1).subscribe(course => {
       this.myCourse = course;
     })
   }

@@ -9,10 +9,11 @@ using API.DTOs;
 using API.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace API.Controllers
 {
-    public class ClassesController : ControllerBase
+    public class ClassesController : APIController
     {
         private readonly DataContext _context;
 
@@ -23,6 +24,10 @@ namespace API.Controllers
         [HttpGet("List")]
         public async Task<ActionResult<IEnumerable<Classes>>> GetClass() {
             return await _context.Classes.Include(c => c.Course).ToListAsync();
+        }
+        [HttpGet("List/{id}")]
+        public async Task<ActionResult<IEnumerable<Classes>>> GetClass(int id) {
+            return await _context.Classes.Include(c => c.Course).Where(x => x.clId == id).ToListAsync();
         }
         [HttpPost("Create")]
         public async Task<ActionResult<Classes>> CreateClass(Classes classes) {

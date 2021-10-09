@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    public class TeacherController
+    public class TeacherController: APIController
     {
         private readonly DataContext _context;
 

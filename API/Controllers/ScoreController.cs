@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace API.Controllers
 {
-    public class ScoreController
+    public class ScoreController : APIController
     {
         private readonly DataContext _context;
 
@@ -19,7 +19,6 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet("myscore/{id}")]
-        //Select Id, StudentId,Grades, ClassesclId, Class_name, Name from scores as s classes as c, courses as cs where StudentId = 1 and s.ClassesclId = c.clId and c.CourseId = cs.cId;
         public async Task<ActionResult<IEnumerable<Score>>> GetScore(int id) {
             return await _context.Scores
             .Include(x => x.Student)

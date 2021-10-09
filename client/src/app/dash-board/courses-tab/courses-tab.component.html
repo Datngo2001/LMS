@@ -1,12 +1,17 @@
-<div class="d-flex flex-wrap justify-content-between pt-3 pb-3" infiniteScroll [infiniteScrollDistance]="2"
+<div class="d-flex flex-wrap pt-3 pb-3" infiniteScroll [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-    <ng-container *ngFor="let course of myCourse">
-        <div class="card bg-light mb-3 shadow-sm " style="max-width: 20rem;">
+      <div class="row">
+        <ng-container *ngFor="let course of myCourse">
+        <div class="col-4">
+          <div class="card bg-light mb-3 shadow-sm ">
             <img src="assets/course.png" class="card-img-top" alt="...">
             <div class="card-body">
-                <h4 class="card-title"><a href="#" class="text-reset stretched-link">{{course.CLass_name}}</a></h4>
-                <p class="card-text">{{course.Lecturer}}</p>
+                <h4 class="card-title"><a href="#" class="text-reset stretched-link">{{course.class_name}}</a></h4>
+                <p class="card-text">{{course.lecturer}}</p>
             </div>
+          </div>
         </div>
-    </ng-container>
+      </ng-container>
+      </div>
+
 </div>
