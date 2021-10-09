@@ -1,8 +1,11 @@
-﻿namespace API.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Entities
 {
     public class Lesson
     {
-        public int Id { get; set; }
+        [Key]
+        public int lId { get; set; }
 
         public int Order { get; set; }
 

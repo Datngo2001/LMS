@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -25,12 +26,14 @@ namespace API.Controllers
         public async Task<ActionResult<Student>> CreateStudent(Student student)
         {
             if (await StudentExists(student.Id)) return BadRequest("The Identity of Student is exist");
-
-            student.Birthday = DateTime.Now;
-            student.Start_date = DateTime.Now;
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
             return Ok();
+        }
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpGet("mycourse")]
+        public async Task<ActionResult<IEnumerable<Classes>>> GetCourse(int cid) {
+            return await _context.Classes.FromSqlRaw("select * from classes where Id = {0}", cid).ToListAsync();
         }
 
         [Authorize(Policy = "RequireAdminRole")]

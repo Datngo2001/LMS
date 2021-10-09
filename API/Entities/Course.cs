@@ -5,7 +5,7 @@ namespace API.Entities
     public class Course
     {
         [Key]
-        public int Id { get; set; }
+        public int cId { get; set; }
 
         [Required]
         public string Name { get; set; }

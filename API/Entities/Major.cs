@@ -4,7 +4,8 @@ namespace API.Entities
 {
     public class Major
     {
-        public int Id { get; set; }
+        [Key]
+        public int mId { get; set; }
 
         [Required]
         public string Name { get; set; }

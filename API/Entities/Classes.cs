@@ -5,21 +5,22 @@ namespace API.Entities
 {
     public class Classes
     {
-        public int Id { get; set; }
+        [Key]
+        public int clId { get; set; }
 
         [Required]
         public string Class_name { get; set; }
 
         [Required]
-        public DateTime Start_date { get; set; }
+        public string Start_date { get; set; }
 
         [Required]
-        public DateTime End_date { get; set; }
+        public string End_date { get; set; }
 
         [Required]
         public string Lecturer { get; set; }
 
-        [Required]
+        [Required]  
         public int Enroll_slot { get; set; }
 
         [Required]
@@ -31,6 +32,8 @@ namespace API.Entities
         [Required]
         public int Total_slot { get; set; }
 
+        public Teacher Teacher { get; set; }
+        public int TeacherId { get; set; }
         public Course Course { get; set; }
         public int CourseId { get; set; }
     }

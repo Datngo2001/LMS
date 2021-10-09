@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211009063004_AddInitialModel")]
+    partial class AddInitialModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,9 +175,6 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Term")
                         .IsRequired()
                         .HasColumnType("text");
@@ -190,8 +189,6 @@ namespace API.Migrations
                     b.HasKey("clId");
 
                     b.HasIndex("CourseId");
-
-                    b.HasIndex("TeacherId");
 
                     b.ToTable("Classes");
                 });
@@ -296,26 +293,10 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ClassesIds")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ClassesclId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Grades")
                         .HasColumnType("double");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentIds")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassesclId");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("Scores");
                 });
@@ -525,15 +506,7 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Entities.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Course");
-
-                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("API.Entities.Enrolled", b =>
@@ -564,21 +537,6 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("Faculty");
-                });
-
-            modelBuilder.Entity("API.Entities.Score", b =>
-                {
-                    b.HasOne("API.Entities.Classes", "Classes")
-                        .WithMany()
-                        .HasForeignKey("ClassesclId");
-
-                    b.HasOne("API.Entities.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId");
-
-                    b.Navigation("Classes");
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("API.Entities.Student", b =>
