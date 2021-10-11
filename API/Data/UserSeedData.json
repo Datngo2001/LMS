@@ -10,7 +10,7 @@
         "bdate": "01-01-2001"
     },
     {
-        "UserName": "Lydia",
+        "UserName": "lydia",
         "fname": "abc",
         "lname": "xyz",
         "gender": "female",
@@ -20,7 +20,7 @@
         "bdate": "01-01-2000"
     },
     {
-        "UserName": "Tami",
+        "UserName": "tami",
         "fname": "asd",
         "lname": "qwe",
         "gender": "male",
@@ -30,7 +30,7 @@
         "bdate": "05-02-2000"
     },
     {
-        "UserName": "Snider",
+        "UserName": "snider",
         "fname": "adf",
         "lname": "qweq",
         "gender": "male",

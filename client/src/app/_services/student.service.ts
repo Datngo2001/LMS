@@ -8,7 +8,7 @@ import { Student } from '../_model/student';
   providedIn: 'root'
 })
 export class StudentService {
-  private baseUrl = environment.apiUrl1;
+  private baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   createStudent(model: any) {
     return this.http.post(this.baseUrl + "student/create", model).pipe(

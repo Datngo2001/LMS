@@ -35,6 +35,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directive/has-role.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
     ProfileComponent,
     TeacherPanelComponent,
     AdminPanelComponent,
+    HasRoleDirective,
+    UserManagementComponent,
+    RolesModalComponent,
   ],
   imports: [
     BrowserModule,

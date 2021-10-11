@@ -9,13 +9,16 @@
             <ul class="navbar-nav me-auto">
                 <ng-container *ngIf="currentUser$ | async">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/course" routerLinkActive="active">My Courses</a>
+                        <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/lists" routerLinkActive="active">My Deadline</a>
+                        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">My Dasboard</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/messages" routerLinkActive="active">My Score</a>
+                    <li class="nav-item" *appHasRole='["Admin"]'>
+                        <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+                    </li>
+                    <li class="nav-item" *appHasRole='["Teacher"]'>
+                        <a class="nav-link" routerLink="/teacher" routerLinkActive="active">Teacher</a>
                     </li>
                 </ng-container>
             </ul>
@@ -27,7 +30,7 @@
                 </button>
                 <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
                     aria-labelledby="button-animated">
-                    <li role="menuitem"><a class="dropdown-item" href="#">Edit Profile</a></li>
+                    <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Edit Profile</a></li>
                     <div class="dropdown-divider"></div>
                     <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
                 </ul>

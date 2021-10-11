@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './_model/user';
 import { AccountService } from './_services/account.service';
 
@@ -9,7 +10,7 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent {
   title = 'client';
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
     this.setCurrentUser();
@@ -17,6 +18,8 @@ export class AppComponent {
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
-    this.accountService.setCurrentUser(user);
+    if (user) {
+      this.accountService.setCurrentUser(user);
+    }
   }
 }
