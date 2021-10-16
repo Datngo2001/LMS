@@ -20,14 +20,15 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: DashBoardComponent},
-      { path: 'submit', component: SubmitComponent },
-      { path: 'course', component: CourseComponent },
-      { path: 'profile', component: ProfileComponent},
-      { path: 'teacher', component: TeacherPanelComponent },
+
       { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]}
     ]
   },
+  { path: 'dashboard', component: DashBoardComponent},
+  { path: 'submit', component: SubmitComponent },
+  { path: 'course', component: CourseComponent },
+  { path: 'profile', component: ProfileComponent},
+  { path: 'teacher', component: TeacherPanelComponent },
   { path: 'error', component: TestErrorsComponent },
   { path: 'server-error', component: ServerErrrorComponent },
   { path: 'not-found', component: NotFoundComponent }

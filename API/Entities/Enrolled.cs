@@ -1,8 +1,11 @@
-﻿namespace API.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Entities
 {
     public class Enrolled
     {
-        public int Id { get; set; }
+        [Key]
+        public int eId { get; set; }
 
         public Student Student { get; set; }
         public int StudentId { get; set; }

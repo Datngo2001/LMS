@@ -1,8 +1,11 @@
-﻿namespace API.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Entities
 {
     public class Faculty
     {
-        public int Id { get; set; }
+        [Key]
+        public int fId { get; set; }
         public string Name { get; set; }
     }
 }
