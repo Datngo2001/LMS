@@ -14,8 +14,8 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(option =>
             {
-                option.UseMySQL(config.GetConnectionString("Default"));
-                //option.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                //option.UseMySQL(config.GetConnectionString("Default"));
+                option.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
             return services;
         }
