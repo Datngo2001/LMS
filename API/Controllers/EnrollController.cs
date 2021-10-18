@@ -13,7 +13,7 @@ namespace API.Controllers
     [ApiController]
     public class EnrollController : ControllerBase
     {
-        
+
         private readonly DataContext _context;
 
         public EnrollController(DataContext context)
@@ -21,19 +21,21 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Enrolled>>> GetEnrolled() {
+        public async Task<ActionResult<IEnumerable<Enrolled>>> GetEnrolled()
+        {
             return await _context.Enrolleds.ToListAsync();
         }
         [HttpPost("register")]
-        public async Task<ActionResult<Enrolled>> SetEnroll(Enrolled enrolled) {
-            if(await ClassExists(enrolled.ClassesId)) return BadRequest("The name of the course is exists!!");
+        public async Task<ActionResult<Enrolled>> SetEnroll(Enrolled enrolled)
+        {
+            if (await ClassExists(enrolled.ClassId)) return BadRequest("The name of the course is exists!!");
             _context.Enrolleds.Add(enrolled);
             await _context.SaveChangesAsync();
             return Ok();
         }
         private async Task<bool> ClassExists(int id)
         {
-            return await _context.Enrolleds.AnyAsync(x => x.ClassesId == id);
+            return await _context.Enrolleds.AnyAsync(x => x.ClassId == id);
         }
     }
 }

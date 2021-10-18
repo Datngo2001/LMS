@@ -36,7 +36,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpGet("mycourse/{id}")]
-        public async Task<ActionResult<IEnumerable<Classes>>> GetCourses(int id) {
+        public async Task<ActionResult<IEnumerable<Class>>> GetCourses(int id) {
             //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
             return await _context.Classes
             .Include(x => x.Course)

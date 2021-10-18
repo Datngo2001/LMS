@@ -22,15 +22,15 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet("List")]
-        public async Task<ActionResult<IEnumerable<Classes>>> GetClass() {
+        public async Task<ActionResult<IEnumerable<Class>>> GetClass() {
             return await _context.Classes.Include(c => c.Course).ToListAsync();
         }
         [HttpGet("List/{id}")]
-        public async Task<ActionResult<IEnumerable<Classes>>> GetClass(int id) {
+        public async Task<ActionResult<IEnumerable<Class>>> GetClass(int id) {
             return await _context.Classes.Include(c => c.Course).Where(x => x.clId == id).ToListAsync();
         }
         [HttpPost("Create")]
-        public async Task<ActionResult<Classes>> CreateClass(Classes classes) {
+        public async Task<ActionResult<Class>> CreateClass(Class classes) {
             if(await ClassExists(classes.Class_name)) return BadRequest("The name of the course is exists!!");
             _context.Classes.Add(classes);
             await _context.SaveChangesAsync();

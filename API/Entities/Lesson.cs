@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
@@ -9,6 +10,6 @@ namespace API.Entities
 
         public int Order { get; set; }
 
-        public int Content { get; set; }
+        public ICollection<Content> Contents { get; set; }
     }
 }

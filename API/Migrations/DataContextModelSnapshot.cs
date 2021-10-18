@@ -144,7 +144,7 @@ namespace API.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("API.Entities.Classes", b =>
+            modelBuilder.Entity("API.Entities.Class", b =>
                 {
                     b.Property<int>("clId")
                         .ValueGeneratedOnAdd()
@@ -195,6 +195,34 @@ namespace API.Migrations
                     b.ToTable("Classes");
                 });
 
+            modelBuilder.Entity("API.Entities.Content", b =>
+                {
+                    b.Property<int>("cId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("LessonlId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("cId");
+
+                    b.HasIndex("LessonlId");
+
+                    b.ToTable("Contents");
+                });
+
             modelBuilder.Entity("API.Entities.Course", b =>
                 {
                     b.Property<int>("cId")
@@ -223,7 +251,7 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClassesId")
+                    b.Property<int>("ClassId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("StudentId")
@@ -231,7 +259,7 @@ namespace API.Migrations
 
                     b.HasKey("eId");
 
-                    b.HasIndex("ClassesId");
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("StudentId");
 
@@ -252,13 +280,32 @@ namespace API.Migrations
                     b.ToTable("Faculties");
                 });
 
+            modelBuilder.Entity("API.Entities.File", b =>
+                {
+                    b.Property<int>("fId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("fId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("API.Entities.Lesson", b =>
                 {
                     b.Property<int>("lId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Content")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Order")
@@ -289,13 +336,35 @@ namespace API.Migrations
                     b.ToTable("Majors");
                 });
 
+            modelBuilder.Entity("API.Entities.Photo", b =>
+                {
+                    b.Property<int>("pId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("pId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("Photos");
+                });
+
             modelBuilder.Entity("API.Entities.Score", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClassesclId")
+                    b.Property<int>("ClassId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Grades")
@@ -306,7 +375,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassesclId");
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("StudentId");
 
@@ -405,6 +474,28 @@ namespace API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("API.Entities.Video", b =>
+                {
+                    b.Property<int>("vId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("vId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("Videos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -510,10 +601,10 @@ namespace API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("API.Entities.Classes", b =>
+            modelBuilder.Entity("API.Entities.Class", b =>
                 {
                     b.HasOne("API.Entities.Course", "Course")
-                        .WithMany()
+                        .WithMany("Classes")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -529,11 +620,18 @@ namespace API.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("API.Entities.Content", b =>
+                {
+                    b.HasOne("API.Entities.Lesson", null)
+                        .WithMany("Contents")
+                        .HasForeignKey("LessonlId");
+                });
+
             modelBuilder.Entity("API.Entities.Enrolled", b =>
                 {
-                    b.HasOne("API.Entities.Classes", "Classes")
+                    b.HasOne("API.Entities.Class", "Class")
                         .WithMany()
-                        .HasForeignKey("ClassesId")
+                        .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -543,9 +641,20 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Classes");
+                    b.Navigation("Class");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("API.Entities.File", b =>
+                {
+                    b.HasOne("API.Entities.Content", "Content")
+                        .WithMany("Files")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
                 });
 
             modelBuilder.Entity("API.Entities.Major", b =>
@@ -559,11 +668,22 @@ namespace API.Migrations
                     b.Navigation("Faculty");
                 });
 
+            modelBuilder.Entity("API.Entities.Photo", b =>
+                {
+                    b.HasOne("API.Entities.Content", "Content")
+                        .WithMany("Photos")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
+                });
+
             modelBuilder.Entity("API.Entities.Score", b =>
                 {
-                    b.HasOne("API.Entities.Classes", "Classes")
+                    b.HasOne("API.Entities.Class", "Class")
                         .WithMany()
-                        .HasForeignKey("ClassesclId")
+                        .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -573,7 +693,7 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Classes");
+                    b.Navigation("Class");
 
                     b.Navigation("Student");
                 });
@@ -598,6 +718,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API.Entities.Video", b =>
+                {
+                    b.HasOne("API.Entities.Content", "Content")
+                        .WithMany("Videos")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -644,6 +775,25 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
                     b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("API.Entities.Content", b =>
+                {
+                    b.Navigation("Files");
+
+                    b.Navigation("Photos");
+
+                    b.Navigation("Videos");
+                });
+
+            modelBuilder.Entity("API.Entities.Course", b =>
+                {
+                    b.Navigation("Classes");
+                });
+
+            modelBuilder.Entity("API.Entities.Lesson", b =>
+                {
+                    b.Navigation("Contents");
                 });
 #pragma warning restore 612, 618
         }

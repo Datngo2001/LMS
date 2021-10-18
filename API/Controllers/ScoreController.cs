@@ -22,7 +22,7 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<Score>>> GetScore(int id) {
             return await _context.Scores
             .Include(x => x.Student)
-            .Include(x => x.Classes)
+            .Include(x => x.Class)
             .Where(x => x.StudentId == id).ToListAsync();
         }
         //Select Id, StudentId,Grades, ClassesclId, Class_name, Name from scores as s classes as c, courses as cs where StudentId = 1 and s.ClassesclId = c.clId and c.CourseId = cs.cId;

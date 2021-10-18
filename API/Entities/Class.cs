@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
-    public class Classes
+    public class Class
     {
         [Key]
         public int clId { get; set; }
@@ -20,7 +20,7 @@ namespace API.Entities
         [Required]
         public string Lecturer { get; set; }
 
-        [Required]  
+        [Required]
         public int Enroll_slot { get; set; }
 
         [Required]

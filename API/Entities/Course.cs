@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
@@ -16,7 +17,7 @@ namespace API.Entities
         [Required]
         public int Credits { get; set; }
 
-
+        public ICollection<Class> Classes { get; set; }
 
     }
 }

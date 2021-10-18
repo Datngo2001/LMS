@@ -20,7 +20,7 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet("myclass/{id}")]
-        public async Task<ActionResult<IEnumerable<Classes>>> GetClass(int id) {
+        public async Task<ActionResult<IEnumerable<Class>>> GetClass(int id) {
             return await _context.Classes.Include(x => x.Course).Where(x => x.TeacherId == id).ToListAsync();
         }
     }
