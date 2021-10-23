@@ -11,7 +11,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EnrollController : ControllerBase
+    public class EnrollController : APIController
     {
 
         private readonly DataContext _context;
@@ -28,14 +28,14 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<Enrolled>> SetEnroll(Enrolled enrolled)
         {
-            if (await ClassExists(enrolled.ClassId)) return BadRequest("The name of the course is exists!!");
+            if (await GroupExists(enrolled.groupId)) return BadRequest("The name of the course is exists!!");
             _context.Enrolleds.Add(enrolled);
             await _context.SaveChangesAsync();
             return Ok();
         }
-        private async Task<bool> ClassExists(int id)
+        private async Task<bool> GroupExists(int id)
         {
-            return await _context.Enrolleds.AnyAsync(x => x.ClassId == id);
+            return await _context.Enrolleds.AnyAsync(x => x.groupId == id);
         }
     }
 }

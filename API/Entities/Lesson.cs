@@ -10,6 +10,10 @@ namespace API.Entities
 
         public int Order { get; set; }
 
+        public Group group { get; set; }
+
+        public int groupId { get; set; }
+
         public ICollection<Content> Contents { get; set; }
     }
 }

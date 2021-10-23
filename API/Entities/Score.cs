@@ -8,8 +8,8 @@
 
         public Student Student { get; set; }
         public int StudentId { get; set; }
-        public Class Class { get; set; }
-        public int ClassId { get; set; }
+        public Group group { get; set; }
+        public int groupId { get; set; }
 
     }
 }

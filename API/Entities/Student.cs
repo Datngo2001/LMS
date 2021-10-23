@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
@@ -31,5 +32,7 @@ namespace API.Entities
         public AppUser User { get; set; }
 
         public int UserId { get; set; }
+
+        public ICollection<Enrolled> Enrolleds { get; set; }
     }
 }

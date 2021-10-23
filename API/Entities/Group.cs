@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
-    public class Class
+    public class Group
     {
         [Key]
-        public int clId { get; set; }
+        public int gId { get; set; }
 
         [Required]
-        public string Class_name { get; set; }
+        public string Group_name { get; set; }
 
         [Required]
         public string Start_date { get; set; }
@@ -36,5 +37,7 @@ namespace API.Entities
         public int TeacherId { get; set; }
         public Course Course { get; set; }
         public int CourseId { get; set; }
+        public ICollection<Enrolled> Enrolleds { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
     }
 }

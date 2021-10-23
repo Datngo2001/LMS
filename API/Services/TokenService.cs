@@ -11,7 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Service
+namespace API.Services
 {
     public class TokenService : ITokenService
     {

@@ -32,8 +32,9 @@ namespace API.Controllers
         }
         [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("mycourse")]
-        public async Task<ActionResult<IEnumerable<Class>>> GetCourse(int cid) {
-            return await _context.Classes.FromSqlRaw("select * from classes where Id = {0}", cid).ToListAsync();
+        public async Task<ActionResult<IEnumerable<Group>>> GetCourse(int cid)
+        {
+            return await _context.Groups.FromSqlRaw("select * from groups where Id = {0}", cid).ToListAsync();
         }
 
         [Authorize(Policy = "RequireAdminRole")]

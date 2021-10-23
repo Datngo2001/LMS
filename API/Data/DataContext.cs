@@ -17,7 +17,7 @@ namespace API.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<Enrolled> Enrolleds { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Major> Majors { get; set; }

@@ -15,7 +15,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CourseController : APIController
     {
         private readonly DataContext _context;
 
@@ -24,11 +24,12 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourse() {
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
+        {
             return await _context.Courses.ToListAsync();
         }
         [HttpPost("Create")]
-        public async Task<ActionResult<Course>> CreateClass(Course course)
+        public async Task<ActionResult<Course>> CreateCourse(Course course)
         {
             if (await CourseExists(course.Name)) return BadRequest("The name of the course is exists!!");
             _context.Courses.Add(course);
@@ -36,9 +37,10 @@ namespace API.Controllers
             return Ok();
         }
         [HttpGet("mycourse/{id}")]
-        public async Task<ActionResult<IEnumerable<Class>>> GetCourses(int id) {
+        public async Task<ActionResult<IEnumerable<Group>>> GetCourses(int id)
+        {
             //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
-            return await _context.Classes
+            return await _context.Groups
             .Include(x => x.Course)
             .Where(s => s.CourseId == id)
             .ToListAsync();

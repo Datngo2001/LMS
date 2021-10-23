@@ -13,5 +13,7 @@ namespace API.Entities
         public string phone { get; set; }
         public string bdate { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
+        public Student student { get; set; }
+        public Teacher teacher { get; set; }
     }
 }

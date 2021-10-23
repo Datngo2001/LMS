@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211018053632_Create")]
+    [Migration("20211018144829_Create")]
     partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,57 +146,6 @@ namespace API.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("API.Entities.Class", b =>
-                {
-                    b.Property<int>("clId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Class_name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("End_date")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Enroll_slot")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Lecturer")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Start_date")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Term")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TotalTime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Total_slot")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("clId");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Classes");
-                });
-
             modelBuilder.Entity("API.Entities.Content", b =>
                 {
                     b.Property<int>("cId")
@@ -253,17 +202,17 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClassId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int>("groupId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("eId");
 
-                    b.HasIndex("ClassId");
-
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("groupId");
 
                     b.ToTable("Enrolleds");
                 });
@@ -304,6 +253,57 @@ namespace API.Migrations
                     b.ToTable("Files");
                 });
 
+            modelBuilder.Entity("API.Entities.Group", b =>
+                {
+                    b.Property<int>("gId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("End_date")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Enroll_slot")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Group_name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Lecturer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Start_date")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Term")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TotalTime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Total_slot")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("gId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("API.Entities.Lesson", b =>
                 {
                     b.Property<int>("lId")
@@ -313,7 +313,12 @@ namespace API.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("groupId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("lId");
+
+                    b.HasIndex("groupId");
 
                     b.ToTable("Lessons");
                 });
@@ -366,20 +371,20 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Grades")
                         .HasColumnType("REAL");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("groupId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassId");
-
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("groupId");
 
                     b.ToTable("Scores");
                 });
@@ -425,7 +430,8 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });
@@ -473,7 +479,8 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Teachers");
                 });
@@ -603,7 +610,44 @@ namespace API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("API.Entities.Class", b =>
+            modelBuilder.Entity("API.Entities.Content", b =>
+                {
+                    b.HasOne("API.Entities.Lesson", null)
+                        .WithMany("Contents")
+                        .HasForeignKey("LessonlId");
+                });
+
+            modelBuilder.Entity("API.Entities.Enrolled", b =>
+                {
+                    b.HasOne("API.Entities.Student", "Student")
+                        .WithMany("Enrolleds")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.Group", "group")
+                        .WithMany("Enrolleds")
+                        .HasForeignKey("groupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("group");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("API.Entities.File", b =>
+                {
+                    b.HasOne("API.Entities.Content", "Content")
+                        .WithMany("Files")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
+                });
+
+            modelBuilder.Entity("API.Entities.Group", b =>
                 {
                     b.HasOne("API.Entities.Course", "Course")
                         .WithMany("Classes")
@@ -622,41 +666,15 @@ namespace API.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("API.Entities.Content", b =>
+            modelBuilder.Entity("API.Entities.Lesson", b =>
                 {
-                    b.HasOne("API.Entities.Lesson", null)
-                        .WithMany("Contents")
-                        .HasForeignKey("LessonlId");
-                });
-
-            modelBuilder.Entity("API.Entities.Enrolled", b =>
-                {
-                    b.HasOne("API.Entities.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
+                    b.HasOne("API.Entities.Group", "group")
+                        .WithMany("Lessons")
+                        .HasForeignKey("groupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Entities.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Class");
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("API.Entities.File", b =>
-                {
-                    b.HasOne("API.Entities.Content", "Content")
-                        .WithMany("Files")
-                        .HasForeignKey("ContentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Content");
+                    b.Navigation("group");
                 });
 
             modelBuilder.Entity("API.Entities.Major", b =>
@@ -683,19 +701,19 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Score", b =>
                 {
-                    b.HasOne("API.Entities.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("API.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Class");
+                    b.HasOne("API.Entities.Group", "group")
+                        .WithMany()
+                        .HasForeignKey("groupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("group");
 
                     b.Navigation("Student");
                 });
@@ -703,8 +721,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Student", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("student")
+                        .HasForeignKey("API.Entities.Student", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -714,8 +732,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Teacher", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("teacher")
+                        .HasForeignKey("API.Entities.Teacher", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -776,6 +794,10 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
+                    b.Navigation("student");
+
+                    b.Navigation("teacher");
+
                     b.Navigation("UserRoles");
                 });
 
@@ -793,9 +815,21 @@ namespace API.Migrations
                     b.Navigation("Classes");
                 });
 
+            modelBuilder.Entity("API.Entities.Group", b =>
+                {
+                    b.Navigation("Enrolleds");
+
+                    b.Navigation("Lessons");
+                });
+
             modelBuilder.Entity("API.Entities.Lesson", b =>
                 {
                     b.Navigation("Contents");
+                });
+
+            modelBuilder.Entity("API.Entities.Student", b =>
+                {
+                    b.Navigation("Enrolleds");
                 });
 #pragma warning restore 612, 618
         }

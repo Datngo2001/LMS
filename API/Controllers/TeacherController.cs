@@ -1,17 +1,14 @@
 using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    public class TeacherController: APIController
+    public class TeacherController : APIController
     {
         private readonly DataContext _context;
 
@@ -20,8 +17,9 @@ namespace API.Controllers
             this._context = context;
         }
         [HttpGet("myclass/{id}")]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClass(int id) {
-            return await _context.Classes.Include(x => x.Course).Where(x => x.TeacherId == id).ToListAsync();
+        public async Task<ActionResult<IEnumerable<Group>>> GetClass(int id)
+        {
+            return await _context.Groups.Include(x => x.Course).Where(x => x.TeacherId == id).ToListAsync();
         }
     }
 }
