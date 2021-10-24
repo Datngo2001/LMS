@@ -11,8 +11,8 @@ namespace API.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public Assignment assignment { get; set; }
-        public ICollection<Photo> Photos { get; set; }
-        public ICollection<Video> Videos { get; set; }
-        public ICollection<File> Files { get; set; }
+        public Photo photo { get; set; }
+        public Video video { get; set; }
+        public File file { get; set; }
     }
 }

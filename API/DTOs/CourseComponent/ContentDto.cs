@@ -11,9 +11,9 @@ namespace API.DTOs.CourseComponent
         public string Type { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public AssignmentDto Link { get; set; }
-        public ICollection<PhotoDto> Photos { get; set; }
-        public ICollection<VideoDto> Videos { get; set; }
-        public ICollection<FileDto> Files { get; set; }
+        public AssignmentDto assignment { get; set; }
+        public PhotoDto photo { get; set; }
+        public VideoDto video { get; set; }
+        public FileDto file { get; set; }
     }
 }
