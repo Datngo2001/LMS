@@ -17,7 +17,7 @@ namespace API.Entities
         [Required]
         public int Credits { get; set; }
 
-        public ICollection<Group> Classes { get; set; }
+        public ICollection<Group> Groups { get; set; }
 
     }
 }

@@ -10,6 +10,8 @@ namespace API.Entities
 
         public int Order { get; set; }
 
+        public string Name { get; set; }
+
         public Group group { get; set; }
 
         public int groupId { get; set; }

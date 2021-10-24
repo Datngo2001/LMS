@@ -14,6 +14,8 @@ namespace API.Entities
         [Required]
         public string Lastname { get; set; }
 
+        public string Gender { get; set; }
+
         [Required]
         public string Picture { get; set; }
 
@@ -24,13 +26,14 @@ namespace API.Entities
         public string Phone { get; set; }
 
         [Required]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Required]
         public string Address { get; set; }
 
-        [Required]
-        public string Start_date { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
+        
+        public DateTime LastActive { get; set; } = DateTime.Now;
 
         public AppUser User { get; set; }
 

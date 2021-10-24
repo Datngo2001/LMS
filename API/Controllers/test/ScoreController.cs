@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ScoreController : APIController
     {
         private readonly DataContext _context;

@@ -7,6 +7,8 @@ using System.Linq;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using API.DTOs;
+using API.Extensions;
 
 namespace API.Controllers
 {
@@ -14,9 +16,11 @@ namespace API.Controllers
     public class GroupController : APIController
     {
         private readonly DataContext _context;
+        private readonly GroupRepository _groupRepository;
 
-        public GroupController(DataContext context)
+        public GroupController(DataContext context, GroupRepository groupRepository)
         {
+            this._groupRepository = groupRepository;
             this._context = context;
         }
         [HttpGet("List")]
@@ -41,5 +45,11 @@ namespace API.Controllers
         {
             return await _context.Groups.AnyAsync(x => x.Group_name == name);
         }
+        // [HttpGet("mygroups")]
+        // public async Task<ICollection<GroupDto>> GetMyEnrolledGroup()
+        // {
+        //     var rs = await _groupRepository.GetEnrolledGroupAsync(User.GetUserId());
+        //     return rs;
+        // }
     }
 }

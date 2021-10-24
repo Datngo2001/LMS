@@ -13,13 +13,15 @@ namespace API.Entities
 
         public string Lastname { get; set; }
 
+        public string Gender { get; set; }
+
         public string Picture { get; set; }
 
         public string Phone { get; set; }
 
         public string Cmnd { get; set; }
 
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public string Address { get; set; }
 
@@ -27,7 +29,9 @@ namespace API.Entities
 
         public string Class { get; set; }
 
-        public string Start_date { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
+        
+        public DateTime LastActive { get; set; } = DateTime.Now;
 
         public AppUser User { get; set; }
 
