@@ -1,3 +1,4 @@
+
 ﻿using API.Entities;
 using System;
 using System.Collections.Generic;
@@ -28,3 +29,4 @@ namespace API.DTOs
         public CourseDto Course {get; set;}
     }
 }
+

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using API.Entities;
 
 namespace API.DTOs
@@ -12,6 +13,5 @@ namespace API.DTOs
         public string Link { get; set; }
 
         public Lesson Lesson { get; set; }
-
     }
 }

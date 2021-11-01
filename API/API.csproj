@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+=======
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+>>>>>>> d54c566e8bbcbc182ad0d4c05576b76a9fe46c17
     <PackageReference Include="CloudinaryDotNet" Version="1.11.0" />
     <PackageReference Include="EntityFrameworkCore.Query" Version="1.3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.8" NoWarn="NU1605" />

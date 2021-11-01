@@ -7,8 +7,10 @@ using System.Linq;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using AutoMapper;
+
 using API.DTOs;
+using API.Extensions;
+using AutoMapper;
 
 namespace API.Controllers
 {
@@ -18,8 +20,12 @@ namespace API.Controllers
         private readonly DataContext _context;
         private readonly IMapper _mapper;
 
-        public GroupController(DataContext context, IMapper mapper)
+        private readonly GroupRepository _groupRepository;
+
+        public GroupController(DataContext context, GroupRepository groupRepository, IMapper mapper)
+
         {
+            this._groupRepository = groupRepository;
             this._context = context;
             this._mapper = mapper;
         }
@@ -49,5 +55,11 @@ namespace API.Controllers
         {
             return await _context.Groups.AnyAsync(x => x.Group_name == name);
         }
+        // [HttpGet("mygroups")]
+        // public async Task<ICollection<GroupDto>> GetMyEnrolledGroup()
+        // {
+        //     var rs = await _groupRepository.GetEnrolledGroupAsync(User.GetUserId());
+        //     return rs;
+        // }
     }
 }

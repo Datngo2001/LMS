@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
@@ -7,5 +8,7 @@ namespace API.Entities
         [Key]
         public int fId { get; set; }
         public string Name { get; set; }
+        public ICollection<Major> Majors { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
     }
 }

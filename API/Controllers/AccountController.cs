@@ -1,7 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
