@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211024004216_InitialModel")]
+    partial class InitialModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,7 +156,7 @@ namespace API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<int>("LessonlId")
+                    b.Property<int?>("LessonlId")
                         .HasColumnType("int");
 
                     b.Property<string>("Link")
@@ -611,13 +613,9 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Content", b =>
                 {
-                    b.HasOne("API.Entities.Lesson", "Lesson")
+                    b.HasOne("API.Entities.Lesson", null)
                         .WithMany("Contents")
-                        .HasForeignKey("LessonlId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Lesson");
+                        .HasForeignKey("LessonlId");
                 });
 
             modelBuilder.Entity("API.Entities.Enrolled", b =>

@@ -1,96 +1,147 @@
-  <div class="row mt-5">
-    <div class="col-12 flex-side">
-      <div class="col-9 card-flex">
-        <div class="top-side-teacher">
-          <div class="tile-top-side">
-            <h4>Recently accessed courses</h4>
-          </div>
-          <div class="card-current">
-            <div class="col-4">
-              <div class="card border-light mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Light card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="card border-light mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Light card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="card border-light mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Light card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="grid mt-5">
+  <div class="grid_row">
+    <div class="grid_column-3">
+      <div class="card mb-3">
+        <h3 class="card-header">Card header</h3>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <h6 class="card-subtitle text-muted">Support card subtitle</h6>
         </div>
-        <div class="body-side mt-5">
-          <div class="body-side-title">
-            <div class="side-title">
-              <h4>Overview Your Class</h4>
-            </div>
-          </div>
-          <div class="body-side-card">
-            <ng-container *ngFor="let item of myClass">
-              <div class="card-col-4">
-                <div class="card border-light mb-3">
-                  <div class="card-header"><h5>Class {{item.class_name}}</h5></div>
-                  <div class="img-card" style="background-image: url(https://images.squarespace-cdn.com/content/v1/5a3254202278e7f239fff96a/1534681014361-WKOCDKTVXU3Y3ZSWU3G0/ai%402x.png?format=750w);"></div>
-                  <div class="card-body">
-                    <a href="">
-                      <h5 class="card-title">{{item.course.name}}</h5>
-                    </a>
-                    <p class="card-text">Some quick example text to build on the card title.</p>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+          <rect width="100%" height="100%" fill="#868e96"></rect>
+          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+        </svg>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-
-
-
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
       </div>
-      <div class="col-3 right-side">
-        <div class="card mb-3">
-          <h3 class="card-header">Card header</h3>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-            <rect width="100%" height="100%" fill="#868e96"></rect>
-            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-          </svg>
-          <div class="card-body">
-            <p class="card-text"></p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-          <div class="card-footer text-muted">
-            2 days ago
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
     </div>
+    <div class="grid_column-9">
+      <div class="top-side-teacher">
+        <div class="tile-top-side">
+          <h4>Recently accessed courses</h4>
+        </div>
+        <div class="card-current">
+          <div class="col-4">
+            <div class="card border-light mb-3" style="max-width: 20rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h4 class="card-title">Light card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card border-light mb-3" style="max-width: 20rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h4 class="card-title">Light card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card border-light mb-3" style="max-width: 20rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h4 class="card-title">Light card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body-side">
+        <div class="body-side-title">
+          <div class="side-title">
+            <h4>Overview Your Class</h4>
+          </div>
+        </div>
+        <div class="body-side-card">
+          <ng-container *ngFor="let item of myClass">
+            <div class="card-col-4">
+              <div class="card border-light mb-3">
+                <div class="card-header"><h5>Class {{item.class_name}}</h5></div>
+                <div class="img-card" style="background-image: url(https://images.squarespace-cdn.com/content/v1/5a3254202278e7f239fff96a/1534681014361-WKOCDKTVXU3Y3ZSWU3G0/ai%402x.png?format=750w);"></div>
+                <div class="card-body">
+                  <a href="">
+                    <h5 class="card-title">{{item.course.name}}</h5>
+                  </a>
+                  <p class="card-text">Some quick example text to build on the card title.</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-light mb-3 grid_column-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
   </div>
+</div>
 

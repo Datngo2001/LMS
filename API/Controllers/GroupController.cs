@@ -7,6 +7,8 @@ using System.Linq;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using AutoMapper;
+using API.DTOs;
 
 namespace API.Controllers
 {
@@ -14,22 +16,28 @@ namespace API.Controllers
     public class GroupController : APIController
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public GroupController(DataContext context)
+        public GroupController(DataContext context, IMapper mapper)
         {
             this._context = context;
+            this._mapper = mapper;
         }
-        [HttpGet("List")]
-        public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
+        [HttpGet("list")]
+        public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroups()
         {
-            return await _context.Groups.Include(c => c.Course).ToListAsync();
+            var group = await _context.Groups.Include(c => c.Course).ToListAsync();
+            var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
+            return Ok(classes);
         }
-        [HttpGet("List/{id}")]
-        public async Task<ActionResult<IEnumerable<Group>>> GetGroups(int id)
+        [HttpGet("list/{id}")]
+        public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroups(int id)
         {
-            return await _context.Groups.Include(c => c.Course).Where(x => x.gId == id).ToListAsync();
+            var group = await _context.Groups.Include(c => c.Course).Where(x => x.CourseId == id).ToListAsync();
+            var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
+            return Ok(classes);
         }
-        [HttpPost("Create")]
+        [HttpPost("create")]
         public async Task<ActionResult<Group>> CreateGroup(Group group)
         {
             if (await GroupExists(group.Group_name)) return BadRequest("The name of the course is exists!!");

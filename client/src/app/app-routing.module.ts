@@ -9,6 +9,7 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SubmitComponent } from './submit/submit.component';
+import { CourseDetailComponent } from './teacher-panel/course-detail/course-detail.component';
 import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'course', component: CourseComponent },
   { path: 'profile', component: ProfileComponent},
   { path: 'teacher', component: TeacherPanelComponent },
+  { path: 'detail', component: CourseDetailComponent },
   { path: 'error', component: TestErrorsComponent },
   { path: 'server-error', component: ServerErrrorComponent },
   { path: 'not-found', component: NotFoundComponent }

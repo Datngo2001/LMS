@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+    using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
@@ -14,5 +14,7 @@ namespace API.Entities
         public ICollection<Photo> Photos { get; set; }
         public ICollection<Video> Videos { get; set; }
         public ICollection<File> Files { get; set; }
+        public Lesson Lesson { get; set; }
+        public int LessonlId { get; set; }
     }
 }

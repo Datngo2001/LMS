@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using API.Extensions;
+using AutoMapper;
 
 namespace API.Controllers
 {
@@ -23,11 +24,14 @@ namespace API.Controllers
     public class CourseController : APIController
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
+
         public UserManager<AppUser> _userManager { get; }
 
-        public CourseController(DataContext context, UserManager<AppUser> userManager)
+        public CourseController(DataContext context, UserManager<AppUser> userManager, IMapper mapper)
         {
             this._userManager = userManager;
+            this._mapper = mapper;
             this._context = context;
         }
         [HttpGet]
@@ -43,17 +47,6 @@ namespace API.Controllers
             _context.Courses.Add(course);
             await _context.SaveChangesAsync();
             return Ok();
-        }
-        [HttpGet("mycourse/{id}")]
-        public async Task<ActionResult<IEnumerable<Group>>> GetCourses(int id)
-        {
-            //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
-            var userId = User.GetUserId();
-            
-            return await _context.Groups
-            .Include(g => g.Course)
-            .Where(g => g.CourseId == id)
-            .ToListAsync();
         }
         private async Task<bool> CourseExists(string name)
         {
