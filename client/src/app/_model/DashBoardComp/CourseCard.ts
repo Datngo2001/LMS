@@ -1,7 +1,6 @@
-export class CourseCardDto {
-    Name: string;
-    PhotoUrl: string;
-    Progess: number;
-    Group_name: string;
-    GroupUrls: string[];
+export class CourseCard {
+    cid: string;
+    name: string;
+    group_name: string;
+    gid: string;
 }

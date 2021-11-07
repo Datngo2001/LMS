@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CourseCard } from 'src/app/_model/DashBoardComp/CourseCard';
 import { DashboardService } from 'src/app/_services/dashboard.service';
 import { DashBoardComponent } from '../dash-board.component';
 
@@ -11,8 +12,7 @@ import { DashBoardComponent } from '../dash-board.component';
 })
 export class CoursesTabComponent implements OnInit {
   id: number;
-  myCourse: any;
-
+  cards: Partial<CourseCard[]>;
 
   constructor(private dashService: DashboardService, private http: HttpClient, private route: ActivatedRoute) { }
 
@@ -20,12 +20,9 @@ export class CoursesTabComponent implements OnInit {
     this.loadMyCourse();
   }
   loadMyCourse() {
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"))
-    this.dashService.myCourse(1).subscribe(course => {
-      this.myCourse = course;
+    this.dashService.CourseCard().subscribe(courseCards => {
+      this.cards = courseCards;
+      console.log(courseCards)
     })
-  }
-  onScroll(): void {
-    console.log("Scrolled")
   }
 }
