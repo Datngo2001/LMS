@@ -6,7 +6,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -37,7 +36,15 @@ namespace API.Controllers
         {
             var userId = User.GetUserId();
             var group =  await _context.Groups.Include(x => x.Course)
-            .Where(x => x.TeacherId == userId).ToListAsync();
+            .Where(x => x.TeacherId == 1).ToListAsync();
+            var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
+            return Ok(classes);
+        }
+        [HttpGet("class/{id}")]
+        public async Task<ActionResult<IEnumerable<GroupDto>>> GetClassDetail(int id)
+        {
+            var group =  await _context.Groups.Include(x => x.Course)
+            .Where(x => x.gId == id).ToListAsync();
             var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
             return Ok(classes);
         }

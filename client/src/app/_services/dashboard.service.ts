@@ -14,10 +14,13 @@ export class DashboardService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   myCourse(sid: number) {
-    return this.http.get<MyCourse>(this.baseUrl + "course/mycourse/" + sid, httpOptions)
+    return this.http.get<MyCourse>(this.baseUrl + "course/mycourse/" + sid, httpOptions);
   }
-  myClass(tid: number) {
-    return this.http.get(this.baseUrl + "teacher/myclass/" + tid, httpOptions)
+  myClass() {
+    return this.http.get(this.baseUrl + "teacher/myclass", httpOptions);
+  }
+  classDetail(id: number) {
+    return this.http.get(this.baseUrl + "teacher/class/" + id, httpOptions);
   }
 }
 

@@ -1,29 +1,54 @@
 <div class="grid">
   <div class="grid_row">
-    <div class="header-course mt-5">
-      <img src="http://localhost:4200/assets/courseTitle.png" alt="" class="detail-img">
-      <h3 class="title-course">Architecture Computer and Assembly Language_ Nhom 02CLC</h3>
-      <h5 class="title-course-1">Learn Assembly like a Professional Start from the basics and go all the way to creating your own applications and games </h5>
-    </div>
+    <ng-container *ngFor="let item of classDetail">
+      <div class="header-course mt-5">
+        <img src="http://localhost:4200/assets/courseTitle.png" alt="" class="detail-img">
+        <h3 class="title-course">{{item.course.name}} Group_{{item.group_name}}</h3>
+        <h5 class="title-course-1">{{item.course.description}} </h5>
+      </div>
+    </ng-container>
+
     <div class="lesson-header">
+      <h5 class="create_deadline-title">Create deadline</h5>
       <ul class="create-lesson">
-        <li class="create-item"> <i class="fas fa-plus-square"></i> Document</li>
-        <li class="create-item"> <i class="fas fa-video"></i> Video</li>
-        <li class="create-item"> <i class="fas fa-clipboard-check"></i> Attendance</li>
-        <li class="create-item"> <i class="fas fa-book"></i> Quizz</li>
-        <li class="create-item"> <i class="fas fa-comments"></i> Opinion</li>
-        <li class="create-item"> <i class="fas fa-cogs"></i> Homework</li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-plus-square"></i> Document </button></li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-video"></i> Video </button></li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-check"></i> Attendence </button></li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-plus-square"></i> Quizz </button></li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-plus-square"></i> Opinion </button></li>
+        <li class="create-item"><button (click)="open()" type="button" class="create-item-btn"><i class="fas fa-book"></i> Homework </button></li>
       </ul>
     </div>
     <div class="info-course">
 
     </div>
     <div class="lesson-content">
-      <h4 class="main-title">Lesson 1 - Assembly Language</h4>
+      <h5 class="main-title">Lesson 1 - What is the AI</h5>
       <img src="" alt="">
       <div class="lesson-1">
         <h5 class="lesson-header-title"></h5>
       </div>
     </div>
+    <div class="create_lecture" *ngIf="check">
+      <div class="lecture_content">
+        <div class="lesson">
+          <button class="close-modal" (click)="cancel()">&times;</button>
+          <div class="form-group">
+            <label class="col-form-label mt-2" for="inputDefault">Title</label>
+            <input type="text" class="form-control" placeholder="Default input" id="inputDefault">
+          </div>
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-2">Descripton</label>
+            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="formFile" class="form-label mt-2">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

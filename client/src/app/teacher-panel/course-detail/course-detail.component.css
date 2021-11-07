@@ -38,3 +38,102 @@ h5.title-course-1 {
   display: 100%;
   justify-content: center;
 }
+.create-item-btn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 3px;
+  cursor: pointer;
+}
+.create-item-btn:hover {
+  background-color: aliceblue;
+}
+.create_deadline-title {
+  margin: 5px 0;
+}
+
+/**/
+.create_lecture {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(88, 63, 63); /* Fallback color */
+  background-color: rgba(86, 101, 115 ,0.5); /* Black w/ opacity */
+  padding-top: 60px;
+  transition: 3s;
+  display: block;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+.display-flex {
+  display: flex;
+}
+.lecture_content {
+  width: 55%;
+  margin: 3% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border-radius: 5px;
+  display: flex;
+  background-color: white ;
+  position: relative;
+}
+.lesson {
+  display: block;
+  margin: 10px;
+  width: 100%;
+}
+.love-message {
+  color: var(--white-color);
+  font-weight: 400;
+  font-size: 17px;
+  width: 100%;
+  margin: 10px 5px;
+  padding: 2px;
+}
+span.red-color {
+  font-weight: 700;
+  font-size: 22px;
+  color: #333;
+}
+.bloak {
+  display: block;
+}
+#our-video {
+
+  margin: 6px 5px;
+  height: 450px;
+  border-radius: 10px;
+}
+p.title-mes {
+  line-height: 24px;
+}
+.close-modal {
+  position: absolute;
+  left: 95%;
+  top: -10px;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.hidden-model {
+  display: none;
+}
+.form-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}

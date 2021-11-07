@@ -3,7 +3,7 @@
 }
 
 .card-col-4 {
-  width: 33%;
+  width: 24%;
   flex-wrap: wrap;
   margin: 1px;
 }
@@ -45,4 +45,12 @@
   background-position: center;
   overflow-y: hidden;
 }
-
+h6.card-title {
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  flex-wrap: wrap;
+}

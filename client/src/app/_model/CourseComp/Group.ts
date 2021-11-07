@@ -1,6 +1,7 @@
 import { Lesson } from "./Lesson";
 
 export class Group {
+    GId: number;
     Group_name: string;
     Start_date: string;
     End_date: string;

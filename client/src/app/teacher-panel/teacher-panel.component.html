@@ -82,59 +82,20 @@
           <ng-container *ngFor="let item of myClass">
             <div class="card-col-4">
               <div class="card border-light mb-3">
-                <div class="card-header"><h5>Class {{item.class_name}}</h5></div>
+                <div class="card-header"><h6>Class {{item.group_name}}</h6></div>
                 <div class="img-card" style="background-image: url(https://images.squarespace-cdn.com/content/v1/5a3254202278e7f239fff96a/1534681014361-WKOCDKTVXU3Y3ZSWU3G0/ai%402x.png?format=750w);"></div>
                 <div class="card-body">
-                  <a href="">
-                    <h5 class="card-title">{{item.course.name}}</h5>
+
+                  <a (click)="detail.loadDetailClass(item.gId)" routerLink="/teacher/class/{{item.gId}}">
+                    <h6 class="card-title">{{item.course.name}}</h6>
                   </a>
                   <p class="card-text">Some quick example text to build on the card title.</p>
                 </div>
+
               </div>
             </div>
           </ng-container>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card border-light mb-3 grid_column-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Light card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+
         </div>
 
       </div>

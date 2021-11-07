@@ -18,7 +18,7 @@ using AutoMapper;
 
 namespace API.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CourseController : APIController

@@ -26,7 +26,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     // observe the current user at user service
-    this.currentUser$ = this.accountService.currentUser$
+    this.currentUser$ = this.accountService.currentUser$;
   }
 
   openLoginModal() {

@@ -9,7 +9,7 @@ namespace API.DTOs
 {
     public class GroupDto
     {
-
+        public int GId { get; set; }
         public string Group_name { get; set; }
 
         public string Start_date { get; set; }
