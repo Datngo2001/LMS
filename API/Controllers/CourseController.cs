@@ -15,24 +15,25 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using API.Extensions;
 using AutoMapper;
+using API.DTOs.DashBoardComponent;
 
 namespace API.Controllers
 {
-    
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class CourseController : APIController
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-
         public UserManager<AppUser> _userManager { get; }
-
-        public CourseController(DataContext context, UserManager<AppUser> userManager, IMapper mapper)
+        private readonly ICourseRepository _courseRepo;
+        public CourseController(DataContext context, ICourseRepository courseRepository, UserManager<AppUser> userManager, IMapper mapper)
         {
             this._userManager = userManager;
             this._mapper = mapper;
             this._context = context;
+            this._courseRepo = courseRepository;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
@@ -52,6 +53,11 @@ namespace API.Controllers
         {
             return await _context.Courses.AnyAsync(x => x.Name == name);
         }
-
+        [HttpGet("mycourses")]
+        public async Task<ActionResult<ICollection<CourseCardDto>>> GetEnrolledCourse()
+        {
+            var rs = await _courseRepo.GetEnrolledCourse(User.GetUserId());
+            return rs.ToArray();
+        }
     }
 }
