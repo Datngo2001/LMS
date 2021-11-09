@@ -2,11 +2,11 @@ import { Assignment } from "./Assignment";
 
 export class Content {
     cId: number;
-    Type: string;
-    Title: string;
-    Description: string;
-    Assignment: Assignment;
-    PhotoUrl: string;
-    VideoUrl: string;
-    FileUrl: string;
+    type: string;
+    title: string;
+    description: string;
+    assignment: Assignment;
+    photoUrl: string;
+    videoUrl: string;
+    fileUrl: string;
 }

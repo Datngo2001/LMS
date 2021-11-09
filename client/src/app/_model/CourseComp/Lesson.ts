@@ -1,7 +1,8 @@
 import { Content } from "./Content";
 
 export class Lesson {
-    Order: number;
-    Name: string;
-    Contents: Content[];
+    lId: number;
+    order: number;
+    name: string;
+    contents: Content[];
 }

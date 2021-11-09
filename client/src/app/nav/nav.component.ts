@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../_model/user';
 import { AccountService } from '../_services/account.service';
-import { LoginComponent } from '../login/login.component';
-import { RegisterComponent } from '../register/register.component';
+import { RegisterComponent } from '../modals/register/register.component';
+import { LoginComponent } from '../modals/login/login.component';
 
 @Component({
   selector: 'app-nav',

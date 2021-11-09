@@ -1,6 +1,6 @@
 export class CourseCard {
-    cid: string;
+    cId: string;
     name: string;
     group_name: string;
-    gid: string;
+    gId: string;
 }

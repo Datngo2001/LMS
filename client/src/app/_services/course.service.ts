@@ -1,10 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Course } from '../_model/course';
+import { environment } from 'src/environments/environment';
+import { Course } from '../_model/CourseComp/course';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  formData: Course;
-  constructor() { }
+  baseUrl = environment.apiUrl;
+  constructor(private http: HttpClient) {
+  }
+  LoadCourseContent(gid: string) {
+    return this.http.get<Course>(this.baseUrl + "course/course?gid=" + gid);
+  }
 }

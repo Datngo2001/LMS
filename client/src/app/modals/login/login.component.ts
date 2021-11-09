@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs/internal/Observable';
-import { User } from '../_model/user';
-import { AccountService } from '../_services/account.service';
+import { AccountService } from 'src/app/_services/account.service';
+
 
 @Component({
   selector: 'app-login',
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe(response => {
       console.log("ok")
       this.bsModalRef.hide()
-      this.router.navigateByUrl("/dashboard");
     })
   }
 

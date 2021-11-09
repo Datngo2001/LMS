@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
       { path: 'dashboard', component: DashBoardComponent},
       { path: 'submit', component: SubmitComponent },
-      { path: 'course', component: CourseComponent },
+      { path: 'course/:name/:gid', component: CourseComponent },
       { path: 'profile', component: ProfileComponent},
       { path: 'teacher', component: TeacherPanelComponent },
       { path: 'teacher/class/:id', component: CourseDetailComponent },

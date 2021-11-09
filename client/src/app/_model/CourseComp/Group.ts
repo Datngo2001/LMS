@@ -1,16 +1,16 @@
 import { Lesson } from "./Lesson";
 
 export class Group {
-    GId: number;
-    Group_name: string;
-    Start_date: string;
-    End_date: string;
-    Lecturer: string;
-    LecturerProfileUrl: string;
-    Enroll_slot: number;
-    Term: string;
-    TotalTime: string;
-    Total_slot: number;
-    CourseId: number;
-    Lessons: Lesson[];
+    gId: number;
+    groupName: string;
+    startDate: string;
+    endDate: string;
+    lecturer: string;
+    lecturerProfileUrl: string;
+    enrollslot: number;
+    term: string;
+    totalTime: string;
+    totalslot: number;
+    courseId: number;
+    lessons: Lesson[];
 }

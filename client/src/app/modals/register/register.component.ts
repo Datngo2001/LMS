@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Student } from '../_model/student';
-import { AccountService } from '../_services/account.service';
-import { StudentService } from '../_services/student.service';
+import { Student } from '../../_model/student';
+import { AccountService } from '../../_services/account.service';
+import { StudentService } from '../../_services/student.service';
 
 @Component({
   selector: 'app-register',

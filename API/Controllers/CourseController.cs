@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using API.Extensions;
 using AutoMapper;
 using API.DTOs.DashBoardComponent;
+using API.DTOs.CourseComponent;
 
 namespace API.Controllers
 {
@@ -38,7 +39,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-            return await _context.Courses.ToListAsync();
+            var rs = await _context.Courses.ToListAsync();
+            return rs;
         }
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("Create")]
@@ -53,11 +55,27 @@ namespace API.Controllers
         {
             return await _context.Courses.AnyAsync(x => x.Name == name);
         }
+        [Authorize(Policy = "All")]
         [HttpGet("mycourses")]
-        public async Task<ActionResult<ICollection<CourseCardDto>>> GetEnrolledCourse()
+        public async Task<ActionResult<IEnumerable<CourseCardDto>>> GetEnrolledCourse()
         {
             var rs = await _courseRepo.GetEnrolledCourse(User.GetUserId());
             return rs.ToArray();
+        }
+        [Authorize(Policy = "All")]
+        [HttpGet("course")]
+        public async Task<ActionResult<CourseDto>> GetCourseOfGroup(int gId)
+        {
+            var uId = User.GetUserId();
+            bool isEnrolled = await _courseRepo.isEnrolled(uId, gId);
+            if (isEnrolled)
+            {
+                return await _courseRepo.LoadCourseContent(gId);
+            }
+            else
+            {
+                return BadRequest("You have not taken this course yet");
+            }
         }
     }
 }

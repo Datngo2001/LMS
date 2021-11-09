@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
-import { RegisterComponent } from '../register/register.component';
+import { RegisterComponent } from '../modals/register/register.component';
 import { User } from '../_model/user';
 import { AccountService } from '../_services/account.service';
 

@@ -1,17 +1,14 @@
 using System.Collections.Generic;
-
+using API.DTOs.CourseComponent;
 using API.Entities;
 
-namespace API.DTOs
+namespace API.DTOs.CourseComponent
 {
     public class LessonDto
     {
-         public int cId { get; set; }
-        public string Type { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Link { get; set; }
-
-        public Lesson Lesson { get; set; }
+        public int lId { get; set; }
+        public int Order { get; set; }
+        public string Name { get; set; }
+        public List<ContentDto> Contents { get; set; }
     }
 }

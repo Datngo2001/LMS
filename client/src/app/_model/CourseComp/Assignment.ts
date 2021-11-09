@@ -1,5 +1,6 @@
 export class Assignment {
-    Name: string;
-    TimeRemaining: string;
-    Url: string;
+    aId: number;
+    name: string;
+    timeRemaining: string;
+    url: string;
 }

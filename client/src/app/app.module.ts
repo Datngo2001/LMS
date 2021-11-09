@@ -8,7 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './modals/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './_modules/shared.module';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -31,7 +31,6 @@ import { SafeEmbedPipe } from './_pipe/safe-embed.pipe';
 import { MessageTypeComponent } from './course/lesson/message-type/message-type.component';
 import { AssignmentTypeComponent } from './course/lesson/assignment-type/assignment-type.component';
 import { SubmitComponent } from './submit/submit.component';
-import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
@@ -39,6 +38,7 @@ import { HasRoleDirective } from './_directive/has-role.directive';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { CourseDetailComponent } from './teacher-panel/course-detail/course-detail.component';
+import { LoginComponent } from './modals/login/login.component';
 
 @NgModule({
   declarations: [

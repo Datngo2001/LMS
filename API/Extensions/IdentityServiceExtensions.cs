@@ -39,6 +39,7 @@ namespace API.Extensions
             {
                 opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
                 opt.AddPolicy("TeacherAdminRole", policy => policy.RequireRole("Admin", "Teacher"));
+                opt.AddPolicy("All", policy => policy.RequireRole("Admin", "Teacher", "Student"));
             });
 
             return services;
