@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class VideoDto
+    public class PhotoDto
     {
-        public int vId { get; set; }
+        [Key]
+        public int pId { get; set; }
         public string Url { get; set; }
-        public string PublicId { get; set; }
         public int ContentId { get; set; }
     }
 }

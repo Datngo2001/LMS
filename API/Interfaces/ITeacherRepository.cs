@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using API.Entities;
 using System.Threading.Tasks;
-using API.DTOs.Teacher;
+using API.Entities;
+using API.DTOs;
 
 namespace API.Interfaces
 {

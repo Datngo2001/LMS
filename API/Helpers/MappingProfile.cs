@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
-using API.DTOs.CourseComponent;
 using API.Entities;
 using AutoMapper;
 namespace API.Helpers
@@ -14,7 +13,7 @@ namespace API.Helpers
         {
             CreateMap<Course, CourseDto>();
             CreateMap<Group, GroupDto>();
-            CreateMap<Enrolled, EnrolledDto>();
+            //CreateMap<Enrolled, EnrolledDto>();
             CreateMap<Lesson, LessonDto>();
         }
     }
