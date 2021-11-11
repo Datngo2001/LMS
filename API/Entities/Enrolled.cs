@@ -5,7 +5,7 @@ namespace API.Entities
     public class Enrolled
     {
         [Key]
-        public int eId { get; set; }
+        public int Id { get; set; }
 
         public Student Student { get; set; }
         public int StudentId { get; set; }

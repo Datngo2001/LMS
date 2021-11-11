@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace API.DTOs
 {
@@ -10,5 +7,6 @@ namespace API.DTOs
         public int fId { get; set; }
         public string Name { get; set; }
         public ICollection<MajorDto> Majors { get; set; }
+        public ICollection<TeacherDto> Teachers { get; set; }
     }
 }

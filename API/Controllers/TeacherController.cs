@@ -3,6 +3,7 @@ using API.DTOs;
 using API.DTOs.CourseComponent;
 using API.Entities;
 using API.Extensions;
+using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -14,41 +15,67 @@ using System.Linq;
 
 using System.Threading.Tasks;
 
-namespace API.Controllers   
+namespace API.Controllers
 
 {
 
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class TeacherController : APIController
     {
-        private readonly DataContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly ITeacherRepository _teacherRepository;
 
-        public TeacherController(DataContext context, UserManager<AppUser> userManager, IMapper mapper)
+        public TeacherController(ITeacherRepository teacherRepository, UserManager<AppUser> userManager, IMapper mapper)
         {
-            this._context = context;
+            this._teacherRepository = teacherRepository;
             this._userManager = userManager;
             this._mapper = mapper;
         }
 
-        [HttpGet("myclass")]
-        public async Task<ActionResult<IEnumerable<GroupDto>>> GetClass()
+        [Authorize(Policy = "TeacherAdminRole")]
+        [HttpGet("{{courseId}}/creategroup")]
+        public async Task<ActionResult> CreateGroup(int courseId, GroupDto groupDto)
         {
             var userId = User.GetUserId();
-            var group =  await _context.Groups.Include(x => x.Course)
-            .Where(x => x.TeacherId == 1).ToListAsync();
-            var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
-            return Ok(classes);
+
+            return Ok();
         }
-        [HttpGet("class/{id}")]
-        public async Task<ActionResult<IEnumerable<GroupDto>>> GetClassDetail(int id)
+
+        [Authorize(Policy = "TeacherAdminRole")]
+        [HttpGet("teachingGroups")]
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetTeachingGroups()
         {
-            var group =  await _context.Groups.Include(x => x.Course)
-            .Where(x => x.gId == id).ToListAsync();
-            var classes = _mapper.Map<IEnumerable<GroupDto>>(group);
-            return Ok(classes);
+            var userId = User.GetUserId();
+
+            return Ok();
         }
-        
-    }   
+        [Authorize(Policy = "TeacherAdminRole")]
+        [HttpGet("group/{id}")]
+        public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroupContent(int id)
+        {
+            var userId = User.GetUserId();
+
+            return Ok();
+        }
+
+        [Authorize(Policy = "TeacherAdminRole")]
+        [HttpPost("updategroup/{id}")]
+        public async Task<ActionResult> UpdateGroupContent(int id, GroupDto groupDto)
+        {
+            var userId = User.GetUserId();
+
+            return Ok();
+        }
+
+
+        [Authorize(Policy = "TeacherAdminRole")]
+        [HttpPost("deletegroup/{id}")]
+        public async Task<ActionResult> DeleteGroup(int id)
+        {
+            var userId = User.GetUserId();
+
+            return Ok();
+        }
+    }
 }
