@@ -42,19 +42,6 @@ namespace API.Controllers
             var rs = await _context.Courses.ToListAsync();
             return rs;
         }
-        [Authorize(Policy = "RequireAdminRole")]
-        [HttpPost("Create")]
-        public async Task<ActionResult<Course>> CreateCourse(Course course)
-        {
-            if (await CourseExists(course.Name)) return BadRequest("The name of the course is exists!!");
-            _context.Courses.Add(course);
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-        private async Task<bool> CourseExists(string name)
-        {
-            return await _context.Courses.AnyAsync(x => x.Name == name);
-        }
         [Authorize(Policy = "All")]
         [HttpGet("mycourses")]
         public async Task<ActionResult<IEnumerable<CourseCardDto>>> GetEnrolledCourse()

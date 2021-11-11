@@ -1,0 +1,29 @@
+<button type="button" class="btn btn-primary" (click)="openFalculyModal()">Add Faculty</button>
+<accordion class="mt-1" [isAnimated]="true">
+    <ng-container *ngFor="let faculty of faculties">
+        <accordion-group>
+            <button class="btn btn-link btn-block justify-content-between d-flex w-100  shadow-none" accordion-heading
+                type="button">
+                <div class="pull-left float-left"><span class="text-primary">{{faculty.name}}</span></div>
+            </button>
+            <p>ID: {{faculty.fId}}</p>
+            <p>Number of majors: {{faculty.majors.length}}</p>
+            <div class="d-flex w-100 justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="openFalculyModal(faculty)">Edit Faculty</button>
+                <button type="button" class="btn btn-danger" (click)="openFalculyModal()">Delete Faculty</button>
+            </div>
+            <p class="mt-3">Majors: </p>
+            <accordion class="mt-1" [isAnimated]="true">
+                <ng-container *ngFor="let major of faculty.majors">
+                    <accordion-group>
+                        <button class="btn btn-link btn-block justify-content-between d-flex w-100  shadow-none"
+                            accordion-heading type="button">
+                            <div class="pull-left float-left"><span class="text-primary">{{major.name}}</span></div>
+                        </button>
+                        <p>ID: {{major.mId}}</p>
+                    </accordion-group>
+                </ng-container>
+            </accordion>
+        </accordion-group>
+    </ng-container>
+</accordion>

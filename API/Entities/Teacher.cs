@@ -26,8 +26,6 @@ namespace API.Entities
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<Group> Groups { get; set; }
-
-
         public AppUser User { get; set; }
         public int UserId { get; set; }
         public Faculty Faculty { get; set; }

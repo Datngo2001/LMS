@@ -2,8 +2,18 @@
 <div class="tab-panel">
     <tabset class="member-tabset">
         <tab class="pt-1" heading="User Management" *appHasRole='["Admin"]'>
-            <div class="contanier">
+            <div class="container">
                 <app-user-management></app-user-management>
+            </div>
+        </tab>
+        <tab class="pt-1" heading="Faculty Management" *appHasRole='["Admin"]'>
+            <div class="container">
+                <app-faculty-management></app-faculty-management>
+            </div>
+        </tab>
+        <tab class="pt-1" heading="Course Management" *appHasRole='["Admin"]'>
+            <div class="container">
+                <app-course-management></app-course-management>
             </div>
         </tab>
     </tabset>

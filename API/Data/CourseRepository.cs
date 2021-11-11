@@ -97,5 +97,40 @@ namespace API.Data
                 return true;
             }
         }
+
+        public async Task<bool> isCourseExist(string name)
+        {
+            return await _context.Courses.AnyAsync(x => x.Name == name);
+        }
+
+        public async Task<bool> AddCourse(Course course)
+        {
+            Major major = await _context.Majors.Include(m => m.Courses).FirstOrDefaultAsync(m => m.mId == course.majorId);
+            if (major == null)
+            {
+                return false;
+            }
+            else if (major.Courses == null)
+            {
+                major.Courses = new List<Course>();
+            }
+            else if (major.Courses.Any(c => c.Name == course.Name))
+            {
+                return false;
+            }
+            major.Courses.Add(course);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public Task<bool> UpdateCourse(Course course)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteCourse(Course course)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

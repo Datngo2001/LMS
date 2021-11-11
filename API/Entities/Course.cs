@@ -14,7 +14,6 @@ namespace API.Entities
         [Required]
         public int Credits { get; set; }
         public ICollection<Group> Groups { get; set; }
-
         public Major major { get; set; }
         public int majorId { get; set; }
     }

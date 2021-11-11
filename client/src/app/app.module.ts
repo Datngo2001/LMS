@@ -39,6 +39,9 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { CourseDetailComponent } from './teacher-panel/course-detail/course-detail.component';
 import { LoginComponent } from './modals/login/login.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
+import { FacultyManagementComponent } from './admin/faculty-management/faculty-management.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,9 @@ import { LoginComponent } from './modals/login/login.component';
     UserManagementComponent,
     RolesModalComponent,
     CourseDetailComponent,
+    CourseManagementComponent,
+    ConfirmDialogComponent,
+    FacultyManagementComponent,
   ],
   imports: [
     BrowserModule,
