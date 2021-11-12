@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
     public class Content
     {
-        [Key]
         public int Id { get; set; }
         public string Type { get; set; }
         public string Title { get; set; }

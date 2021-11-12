@@ -21,9 +21,9 @@ namespace API.Data
             if (users == null) return;
 
             var roles = new List<AppRole>{
-                new AppRole{Name = "Student"},
                 new AppRole{Name = "Admin"},
-                new AppRole{Name = "Teacher"}
+                new AppRole{Name = "Teacher"},
+                new AppRole{Name = "Student"}
             };
 
             foreach (var role in roles)

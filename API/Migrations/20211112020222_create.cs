@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace API.Migrations
 {
-    public partial class addInitialModel : Migration
+    public partial class create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,13 +53,13 @@ namespace API.Migrations
                 name: "Faculties",
                 columns: table => new
                 {
-                    fId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Faculties", x => x.fId);
+                    table.PrimaryKey("PK_Faculties", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -203,19 +203,19 @@ namespace API.Migrations
                 name: "Majors",
                 columns: table => new
                 {
-                    mId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     FacultyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Majors", x => x.mId);
+                    table.PrimaryKey("PK_Majors", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Majors_Faculties_FacultyId",
                         column: x => x.FacultyId,
                         principalTable: "Faculties",
-                        principalColumn: "fId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -225,14 +225,14 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Firstname = table.Column<string>(type: "text", nullable: false),
-                    Lastname = table.Column<string>(type: "text", nullable: false),
+                    Firstname = table.Column<string>(type: "text", nullable: true),
+                    Lastname = table.Column<string>(type: "text", nullable: true),
                     Gender = table.Column<string>(type: "text", nullable: true),
-                    Picture = table.Column<string>(type: "text", nullable: false),
-                    Cmnd = table.Column<string>(type: "text", nullable: false),
-                    Phone = table.Column<string>(type: "text", nullable: false),
+                    Picture = table.Column<string>(type: "text", nullable: true),
+                    Cmnd = table.Column<string>(type: "text", nullable: true),
+                    Phone = table.Column<string>(type: "text", nullable: true),
                     Birthday = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastActive = table.Column<DateTime>(type: "datetime", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
@@ -251,7 +251,7 @@ namespace API.Migrations
                         name: "FK_Teachers_Faculties_FacultyId",
                         column: x => x.FacultyId,
                         principalTable: "Faculties",
-                        principalColumn: "fId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -259,21 +259,21 @@ namespace API.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    cId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     Credits = table.Column<int>(type: "int", nullable: false),
                     majorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.cId);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Courses_Majors_majorId",
                         column: x => x.majorId,
                         principalTable: "Majors",
-                        principalColumn: "mId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -281,27 +281,27 @@ namespace API.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    gId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Group_name = table.Column<string>(type: "text", nullable: false),
-                    Start_date = table.Column<string>(type: "text", nullable: false),
-                    End_date = table.Column<string>(type: "text", nullable: false),
-                    Lecturer = table.Column<string>(type: "text", nullable: false),
+                    Group_name = table.Column<string>(type: "text", nullable: true),
+                    Start_date = table.Column<string>(type: "text", nullable: true),
+                    End_date = table.Column<string>(type: "text", nullable: true),
+                    Lecturer = table.Column<string>(type: "text", nullable: true),
                     Enroll_slot = table.Column<int>(type: "int", nullable: false),
-                    Term = table.Column<string>(type: "text", nullable: false),
-                    TotalTime = table.Column<string>(type: "text", nullable: false),
+                    Term = table.Column<string>(type: "text", nullable: true),
+                    TotalTime = table.Column<string>(type: "text", nullable: true),
                     Total_slot = table.Column<int>(type: "int", nullable: false),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     CourseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.gId);
+                    table.PrimaryKey("PK_Groups", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Groups_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
-                        principalColumn: "cId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Groups_Teachers_TeacherId",
@@ -315,19 +315,19 @@ namespace API.Migrations
                 name: "Enrolleds",
                 columns: table => new
                 {
-                    eId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     groupId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enrolleds", x => x.eId);
+                    table.PrimaryKey("PK_Enrolleds", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Enrolleds_Groups_groupId",
                         column: x => x.groupId,
                         principalTable: "Groups",
-                        principalColumn: "gId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Enrolleds_Students_StudentId",
@@ -341,7 +341,7 @@ namespace API.Migrations
                 name: "Lessons",
                 columns: table => new
                 {
-                    lId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Order = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
@@ -349,12 +349,12 @@ namespace API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lessons", x => x.lId);
+                    table.PrimaryKey("PK_Lessons", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Lessons_Groups_groupId",
                         column: x => x.groupId,
                         principalTable: "Groups",
-                        principalColumn: "gId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -375,7 +375,7 @@ namespace API.Migrations
                         name: "FK_Scores_Groups_groupId",
                         column: x => x.groupId,
                         principalTable: "Groups",
-                        principalColumn: "gId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Scores_Students_StudentId",
@@ -389,30 +389,30 @@ namespace API.Migrations
                 name: "Contents",
                 columns: table => new
                 {
-                    cId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Type = table.Column<string>(type: "text", nullable: true),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Link = table.Column<string>(type: "text", nullable: true),
+                    LessonId = table.Column<int>(type: "int", nullable: true),
                     LessonlId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contents", x => x.cId);
+                    table.PrimaryKey("PK_Contents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contents_Lessons_LessonlId",
-                        column: x => x.LessonlId,
+                        name: "FK_Contents_Lessons_LessonId",
+                        column: x => x.LessonId,
                         principalTable: "Lessons",
-                        principalColumn: "lId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Files",
                 columns: table => new
                 {
-                    fId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Url = table.Column<string>(type: "text", nullable: true),
                     PublicId = table.Column<string>(type: "text", nullable: true),
@@ -420,12 +420,12 @@ namespace API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Files", x => x.fId);
+                    table.PrimaryKey("PK_Files", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Files_Contents_ContentId",
                         column: x => x.ContentId,
                         principalTable: "Contents",
-                        principalColumn: "cId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -433,7 +433,7 @@ namespace API.Migrations
                 name: "Photos",
                 columns: table => new
                 {
-                    pId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Url = table.Column<string>(type: "text", nullable: true),
                     PublicId = table.Column<string>(type: "text", nullable: true),
@@ -441,12 +441,12 @@ namespace API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photos", x => x.pId);
+                    table.PrimaryKey("PK_Photos", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Photos_Contents_ContentId",
                         column: x => x.ContentId,
                         principalTable: "Contents",
-                        principalColumn: "cId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -454,7 +454,7 @@ namespace API.Migrations
                 name: "Videos",
                 columns: table => new
                 {
-                    vId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Url = table.Column<string>(type: "text", nullable: true),
                     PublicId = table.Column<string>(type: "text", nullable: true),
@@ -462,12 +462,12 @@ namespace API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Videos", x => x.vId);
+                    table.PrimaryKey("PK_Videos", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Videos_Contents_ContentId",
                         column: x => x.ContentId,
                         principalTable: "Contents",
-                        principalColumn: "cId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -509,9 +509,9 @@ namespace API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contents_LessonlId",
+                name: "IX_Contents_LessonId",
                 table: "Contents",
-                column: "LessonlId");
+                column: "LessonId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_majorId",
@@ -531,7 +531,8 @@ namespace API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Files_ContentId",
                 table: "Files",
-                column: "ContentId");
+                column: "ContentId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Groups_CourseId",
@@ -556,7 +557,8 @@ namespace API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Photos_ContentId",
                 table: "Photos",
-                column: "ContentId");
+                column: "ContentId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_groupId",
@@ -588,7 +590,8 @@ namespace API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Videos_ContentId",
                 table: "Videos",
-                column: "ContentId");
+                column: "ContentId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

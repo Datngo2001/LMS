@@ -5,7 +5,6 @@ namespace API.Entities
 {
     public class Lesson
     {
-        [Key]
         public int Id { get; set; }
 
         public int Order { get; set; }

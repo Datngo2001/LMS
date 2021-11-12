@@ -5,9 +5,7 @@ namespace API.Entities
 {
     public class Major
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
         public ICollection<Course> Courses { get; set; }
 

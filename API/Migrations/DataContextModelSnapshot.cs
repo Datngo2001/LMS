@@ -126,18 +126,18 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Content", b =>
                 {
-                    b.Property<int>("cId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<int>("LessonlId")
+                    b.Property<int?>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Link")
-                        .HasColumnType("text");
+                    b.Property<int>("LessonlId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
@@ -145,16 +145,16 @@ namespace API.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("cId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("LessonlId");
+                    b.HasIndex("LessonId");
 
                     b.ToTable("Contents");
                 });
 
             modelBuilder.Entity("API.Entities.Course", b =>
                 {
-                    b.Property<int>("cId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -162,17 +162,15 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("majorId")
                         .HasColumnType("int");
 
-                    b.HasKey("cId");
+                    b.HasKey("Id");
 
                     b.HasIndex("majorId");
 
@@ -181,7 +179,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Enrolled", b =>
                 {
-                    b.Property<int>("eId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -191,7 +189,7 @@ namespace API.Migrations
                     b.Property<int>("groupId")
                         .HasColumnType("int");
 
-                    b.HasKey("eId");
+                    b.HasKey("Id");
 
                     b.HasIndex("StudentId");
 
@@ -202,21 +200,21 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Faculty", b =>
                 {
-                    b.Property<int>("fId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("fId");
+                    b.HasKey("Id");
 
                     b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("API.Entities.File", b =>
                 {
-                    b.Property<int>("fId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -229,16 +227,17 @@ namespace API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
-                    b.HasKey("fId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ContentId");
+                    b.HasIndex("ContentId")
+                        .IsUnique();
 
                     b.ToTable("Files");
                 });
 
             modelBuilder.Entity("API.Entities.Group", b =>
                 {
-                    b.Property<int>("gId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -246,39 +245,33 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("End_date")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Enroll_slot")
                         .HasColumnType("int");
 
                     b.Property<string>("Group_name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Lecturer")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Start_date")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<string>("Term")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("TotalTime")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Total_slot")
                         .HasColumnType("int");
 
-                    b.HasKey("gId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseId");
 
@@ -289,7 +282,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Lesson", b =>
                 {
-                    b.Property<int>("lId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -302,7 +295,7 @@ namespace API.Migrations
                     b.Property<int>("groupId")
                         .HasColumnType("int");
 
-                    b.HasKey("lId");
+                    b.HasKey("Id");
 
                     b.HasIndex("groupId");
 
@@ -311,7 +304,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Major", b =>
                 {
-                    b.Property<int>("mId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -319,10 +312,9 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("mId");
+                    b.HasKey("Id");
 
                     b.HasIndex("FacultyId");
 
@@ -331,7 +323,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
-                    b.Property<int>("pId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -344,9 +336,10 @@ namespace API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
-                    b.HasKey("pId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ContentId");
+                    b.HasIndex("ContentId")
+                        .IsUnique();
 
                     b.ToTable("Photos");
                 });
@@ -435,14 +428,12 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Cmnd")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Created")
@@ -452,7 +443,6 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Firstname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Gender")
@@ -462,15 +452,12 @@ namespace API.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Lastname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Picture")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("UserId")
@@ -488,7 +475,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Video", b =>
                 {
-                    b.Property<int>("vId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -501,9 +488,10 @@ namespace API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
-                    b.HasKey("vId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ContentId");
+                    b.HasIndex("ContentId")
+                        .IsUnique();
 
                     b.ToTable("Videos");
                 });
@@ -555,10 +543,10 @@ namespace API.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
@@ -579,10 +567,10 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -615,9 +603,7 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Entities.Lesson", "Lesson")
                         .WithMany("Contents")
-                        .HasForeignKey("LessonlId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LessonId");
 
                     b.Navigation("Lesson");
                 });
@@ -655,8 +641,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.File", b =>
                 {
                     b.HasOne("API.Entities.Content", "Content")
-                        .WithMany("Files")
-                        .HasForeignKey("ContentId")
+                        .WithOne("Files")
+                        .HasForeignKey("API.Entities.File", "ContentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -707,8 +693,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.Content", "Content")
-                        .WithMany("Photos")
-                        .HasForeignKey("ContentId")
+                        .WithOne("Photos")
+                        .HasForeignKey("API.Entities.Photo", "ContentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -767,8 +753,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Video", b =>
                 {
                     b.HasOne("API.Entities.Content", "Content")
-                        .WithMany("Videos")
-                        .HasForeignKey("ContentId")
+                        .WithOne("Videos")
+                        .HasForeignKey("API.Entities.Video", "ContentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

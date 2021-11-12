@@ -4,7 +4,6 @@ namespace API.Entities
 {
     public class Enrolled
     {
-        [Key]
         public int Id { get; set; }
 
         public Student Student { get; set; }
