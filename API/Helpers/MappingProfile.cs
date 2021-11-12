@@ -12,9 +12,28 @@ namespace API.Helpers
         public MappingProfile()
         {
             CreateMap<Course, CourseDto>();
+            CreateMap<CourseDto, Course>();
             CreateMap<Group, GroupDto>();
-            //CreateMap<Enrolled, EnrolledDto>();
+            CreateMap<GroupDto, Group>();
             CreateMap<Lesson, LessonDto>();
+            CreateMap<LessonDto, Lesson>();
+            CreateMap<Content, ContentDto>();
+            CreateMap<ContentDto, Content>();
+            CreateMap<Photo, PhotoDto>();
+            CreateMap<PhotoDto, Photo>();
+            CreateMap<Video, VideoDto>();
+            CreateMap<VideoDto, Video>();
+            CreateMap<File, FileDto>();
+            CreateMap<FileDto, File>();
+            CreateMap<Faculty, FacultyDto>();
+            CreateMap<FacultyDto, Faculty>();
+            CreateMap<Major, MajorDto>();
+            CreateMap<MajorDto, Major>();
+            CreateMap<Student, StudentDto>();
+            CreateMap<StudentDto, Student>();
+            CreateMap<Teacher, TeacherDto>();
+            CreateMap<TeacherDto, Teacher>();
+            
         }
     }
 }

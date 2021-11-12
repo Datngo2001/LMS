@@ -20,7 +20,7 @@ namespace API.Extensions
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IFacultyRepository, FacultyRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
-            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            services.AddAutoMapper(typeof(MappingProfile).Assembly);
             services.AddDbContext<DataContext>(option =>
             {
                 option.UseMySQL(config.GetConnectionString("Default"));
