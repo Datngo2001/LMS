@@ -1,6 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/_model/CourseComp/Group';
 import { DashboardService } from 'src/app/_services/dashboard.service';
 
 @Component({

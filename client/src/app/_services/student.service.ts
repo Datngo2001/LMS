@@ -11,9 +11,10 @@ export class StudentService {
   private baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   createStudent(model: any) {
+
     return this.http.post(this.baseUrl + "student/create", model).pipe(
       map((student: Student) => {
-        if(student) {
+        if (student) {
           localStorage.setItem('student', JSON.stringify(student));
         }
       })

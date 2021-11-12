@@ -1,15 +1,15 @@
 ﻿import { Lesson } from "./Lesson";
 
 export interface Group {
-    gId: number;
-    group_name: string;
-    start_date: string;
-    end_date: string;
+    id: number;
+    groupName: string;
+    startDate: string;
+    endDate: string;
     lecturer: string;
-    enroll_slot: number;
+    enrollSlot: number;
     term: string;
     totalTime: string;
-    total_slot: number;
+    totalSlot: number;
     teacherId: number;
     courseId: number;
     lessons: Lesson[];

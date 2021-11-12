@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CourseCard } from '../_model/DashBoardComp/CourseCard';
+import { Course } from '../_model/Course';
+
 const httpOptions = {
   headers: new HttpHeaders({
     //Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('user')).token
@@ -14,7 +15,7 @@ export class DashboardService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   CourseCard() {
-    return this.http.get<CourseCard[]>(this.baseUrl + "course/mycourses/", httpOptions);
+    return this.http.get<Course[]>(this.baseUrl + "course/mycourses/", httpOptions);
   }
   myClass() {
     return this.http.get(this.baseUrl + "teacher/myclass", httpOptions);

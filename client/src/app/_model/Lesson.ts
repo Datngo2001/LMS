@@ -1,7 +1,7 @@
 ﻿import { Content } from "./Content";
 
 export interface Lesson {
-    lId: number;
+    id: number;
     order: number;
     name: string;
     groupId: number;

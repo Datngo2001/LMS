@@ -1,7 +1,7 @@
 ﻿import { Group } from "./Group";
 
 export interface Course {
-    cId: number;
+    id: number;
     name: string;
     description: string;
     credits: number;

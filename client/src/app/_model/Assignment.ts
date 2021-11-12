@@ -1,5 +1,5 @@
 export interface Assignment {
-    aId: number;
+    id: number;
     start: string;
     end: string;
 }

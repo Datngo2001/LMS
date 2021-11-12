@@ -65,33 +65,32 @@ namespace API.Data
 
         public async Task<IEnumerable<CourseDto>> GetEnrolledCourse(int userId)
         {
-            return await (from c in _context.Courses
-                          join g in _context.Groups on c.Id equals g.Id
-                          join e in _context.Enrolleds on g.Id equals e.Id
+            return await (from e in _context.Enrolleds
                           join s in _context.Students on e.StudentId equals s.Id
+                          join g in _context.Groups on e.groupId equals g.Id
                           where s.UserId == userId
                           select new CourseDto()
                           {
-                              Id = c.Id,
-                              Name = c.Name,
+                              Id = g.Course.Id,
+                              Name = g.Course.Name,
+                              Description = g.Course.Description,
                               Groups = new List<GroupDto>(){
                                   new GroupDto(){
                                       Id = g.Id,
                                       GroupName = g.Group_name
                                   }
                               }
-                          }).ToArrayAsync();
+                          }).AsSingleQuery().ToArrayAsync();
         }
 
         public async Task<bool> isStudentEnrolled(int uId, int gId)
         {
-            var rs = await (from g in _context.Groups
-                            join e in _context.Enrolleds on g.Id equals e.Id
+            var rs = await (from e in _context.Enrolleds
                             join s in _context.Students on e.StudentId equals s.Id
                             where s.UserId == uId && e.groupId == gId
-                            select g
+                            select e
                             ).ToArrayAsync();
-            if (rs.Length > 0)
+            if (rs.Length < 0)
             {
                 return false;
             }
@@ -121,14 +120,18 @@ namespace API.Data
             return true;
         }
 
-        public Task<bool> UpdateCourse(Course course)
+        public async Task<bool> UpdateCourse(Course course)
         {
-            throw new NotImplementedException();
+            _context.Update(course);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task<bool> DeleteCourse(Course course)
+        public async Task<bool> DeleteCourse(Course course)
         {
-            throw new NotImplementedException();
+            _context.Courses.Remove(course);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> isCourseExist(Course course)

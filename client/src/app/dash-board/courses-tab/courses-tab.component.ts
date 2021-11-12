@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CourseCard } from 'src/app/_model/DashBoardComp/CourseCard';
+import { Course } from 'src/app/_model/Course';
 import { DashboardService } from 'src/app/_services/dashboard.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { DashboardService } from 'src/app/_services/dashboard.service';
 })
 export class CoursesTabComponent implements OnInit {
   id: number;
-  cards: Partial<CourseCard[]>;
+  courses: Partial<Course[]>;
 
   constructor(private dashService: DashboardService, private http: HttpClient, private route: ActivatedRoute) { }
 
@@ -19,8 +19,9 @@ export class CoursesTabComponent implements OnInit {
     this.loadMyCourse();
   }
   loadMyCourse() {
-    this.dashService.CourseCard().subscribe(courseCards => {
-      this.cards = courseCards;
+    this.dashService.CourseCard().subscribe(courses => {
+      this.courses = courses;
+      console.log(this.courses)
     })
   }
 }
