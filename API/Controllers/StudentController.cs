@@ -43,15 +43,15 @@ namespace API.Controllers
         //     return await _context.Groups.FromSqlRaw("select * from groups where Id = {0}", cid).ToListAsync();
         // }
         // [Authorize(Policy = "RequireAdminRole")]
-        [HttpGet("mycourse")]
-        public async Task<ActionResult<IEnumerable<EnrolledDto>>> GetCourses()
-        {
-            var userId = User.GetUserId();
-            //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
-            var group = await _context.Enrolleds.Include(x => x.group).Include(x => x.group.Course).Where(x => x.StudentId == userId).ToListAsync();
-            var mycourse = _mapper.Map<IEnumerable<EnrolledDto>>(group);
-            return Ok(mycourse);
-        }
+        // [HttpGet("mycourse")]
+        // public async Task<ActionResult<IEnumerable<EnrolledDto>>> GetCourses()
+        // {
+        //     var userId = User.GetUserId();
+        //     //"SELECT * FROM lms.classes as c, lms.enrolleds as e where StudentId = {0} and c.clId = e.ClassesId"
+        //     var group = await _context.Enrolleds.Include(x => x.group).Include(x => x.group.Course).Where(x => x.StudentId == userId).ToListAsync();
+        //     var mycourse = _mapper.Map<IEnumerable<EnrolledDto>>(group);
+        //     return Ok(mycourse);
+        // }
 
         [Authorize(Policy = "RequireAdminRole")]
         private async Task<bool> StudentExists(int id)

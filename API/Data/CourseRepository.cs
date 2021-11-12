@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using API.DTOs.CourseComponent;
-using API.DTOs.DashBoardComponent;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -22,18 +21,18 @@ namespace API.Data
         public async Task<CourseDto> LoadCourseContent(int gId)
         {
             return await (from c in _context.Courses
-                          join g in _context.Groups on c.cId equals g.CourseId
-                          where g.gId == gId
-                          orderby g.gId
+                          join g in _context.Groups on c.Id equals g.CourseId
+                          where g.Id == gId
+                          orderby g.Id
                           select new CourseDto()
                           {
-                              cId = c.cId,
+                              Id = c.Id,
                               Name = c.Name,
                               Description = c.Description,
                               Credits = c.Credits,
-                              Group = new GroupDto()
+                              Groups = new List<GroupDto>(){new GroupDto()
                               {
-                                  GId = g.gId,
+                                  Id = g.Id,
                                   GroupName = g.Group_name,
                                   StartDate = g.Start_date,
                                   EndDate = g.End_date,
@@ -43,47 +42,51 @@ namespace API.Data
                                   TotalTime = g.TotalTime,
                                   TotalSlot = g.Total_slot,
                                   Lessons = (from l in g.Lessons
-                                             where l.groupId == g.gId
+                                             where l.groupId == g.Id
                                              orderby l.Order
                                              select new LessonDto()
                                              {
-                                                 lId = l.lId,
+                                                 Id = l.Id,
                                                  Order = l.Order,
                                                  Name = l.Name,
                                                  Contents = (from ct in l.Contents
-                                                             where ct.LessonlId == l.lId
+                                                             where ct.LessonlId == l.Id
                                                              select new ContentDto()
                                                              {
-                                                                 cId = ct.cId,
+                                                                 Id = ct.Id,
                                                                  Type = ct.Type,
                                                                  Title = ct.Title,
                                                                  Description = ct.Description
                                                              }).ToList()
                                              }).ToList()
-                              }
+                              }}
                           }).AsSingleQuery().FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<CourseCardDto>> GetEnrolledCourse(int userId)
+        public async Task<IEnumerable<CourseDto>> GetEnrolledCourse(int userId)
         {
             return await (from c in _context.Courses
-                          join g in _context.Groups on c.cId equals g.gId
-                          join e in _context.Enrolleds on g.gId equals e.eId
+                          join g in _context.Groups on c.Id equals g.Id
+                          join e in _context.Enrolleds on g.Id equals e.Id
                           join s in _context.Students on e.StudentId equals s.Id
                           where s.UserId == userId
-                          select new CourseCardDto()
+                          select new CourseDto()
                           {
-                              cId = c.cId,
+                              Id = c.Id,
                               Name = c.Name,
-                              Group_name = g.Group_name,
-                              gId = g.gId
+                              Groups = new List<GroupDto>(){
+                                  new GroupDto(){
+                                      Id = g.Id,
+                                      GroupName = g.Group_name
+                                  }
+                              }
                           }).ToArrayAsync();
         }
 
-        public async Task<bool> isEnrolled(int uId, int gId)
+        public async Task<bool> isStudentEnrolled(int uId, int gId)
         {
             var rs = await (from g in _context.Groups
-                            join e in _context.Enrolleds on g.gId equals e.eId
+                            join e in _context.Enrolleds on g.Id equals e.Id
                             join s in _context.Students on e.StudentId equals s.Id
                             where s.UserId == uId && e.groupId == gId
                             select g
@@ -98,14 +101,9 @@ namespace API.Data
             }
         }
 
-        public async Task<bool> isCourseExist(string name)
-        {
-            return await _context.Courses.AnyAsync(x => x.Name == name);
-        }
-
         public async Task<bool> AddCourse(Course course)
         {
-            Major major = await _context.Majors.Include(m => m.Courses).FirstOrDefaultAsync(m => m.mId == course.majorId);
+            Major major = await _context.Majors.Include(m => m.Courses).FirstOrDefaultAsync(m => m.Id == course.majorId);
             if (major == null)
             {
                 return false;
@@ -131,6 +129,11 @@ namespace API.Data
         public Task<bool> DeleteCourse(Course course)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> isCourseExist(Course course)
+        {
+            return await _context.Courses.AnyAsync(c => c.Id == course.Id);
         }
     }
 }

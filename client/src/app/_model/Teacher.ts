@@ -1,16 +1,18 @@
-export interface student {
+import { Group } from "./Group";
+
+export interface Teacher {
     id: number;
     firstname: string;
     lastname: string;
     gender: string;
     picture: string;
-    phone: string;
     cmnd: string;
+    phone: string;
     birthday: string;
     address: string;
-    major: string;
-    class: string;
     created: string;
     lastActive: string;
+    groups: Group[];
     userId: number;
+    facultyId: number;
 }

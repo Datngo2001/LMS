@@ -35,7 +35,7 @@ namespace API.Data
 
         public async Task<bool> AddMajorToFaculty(Major major)
         {
-            Faculty faculty = await _context.Faculties.Include(f => f.Majors).FirstOrDefaultAsync(f => f.fId == major.FacultyId);
+            Faculty faculty = await _context.Faculties.Include(f => f.Majors).FirstOrDefaultAsync(f => f.Id == major.FacultyId);
             if (faculty == null)
             {
                 return false;
@@ -58,12 +58,12 @@ namespace API.Data
             return await (from f in _context.Faculties
                           select new FacultyDto()
                           {
-                              fId = f.fId,
+                              fId = f.Id,
                               Name = f.Name,
                               Majors = (from m in f.Majors
                                         select new MajorDto()
                                         {
-                                            mId = m.mId,
+                                            mId = m.Id,
                                             Name = m.Name
                                         }).ToList()
                           }).AsSingleQuery().ToListAsync();

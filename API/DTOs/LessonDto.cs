@@ -5,7 +5,7 @@ namespace API.DTOs
 {
     public class LessonDto
     {
-        public int lId { get; set; }
+        public int Id { get; set; }
 
         public int Order { get; set; }
 

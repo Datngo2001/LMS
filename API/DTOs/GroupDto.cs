@@ -6,15 +6,15 @@ namespace API.DTOs
 {
     public class GroupDto
     {
-        public int gId { get; set; }
-        public string Group_name { get; set; }
-        public string Start_date { get; set; }
-        public string End_date { get; set; }
+        public int Id { get; set; }
+        public string GroupName { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public string Lecturer { get; set; }
-        public int Enroll_slot { get; set; }
+        public int EnrollSlot { get; set; }
         public string Term { get; set; }
         public string TotalTime { get; set; }
-        public int Total_slot { get; set; }
+        public int TotalSlot { get; set; }
         public int TeacherId { get; set; }
         public int CourseId { get; set; }
         public ICollection<LessonDto> Lessons { get; set; }

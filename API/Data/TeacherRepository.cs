@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using API.DTOs.Teacher;
 using API.Interfaces;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
+using API.DTOs;
 
 namespace API.Data
 {
@@ -23,7 +23,7 @@ namespace API.Data
         }
         public async Task<bool> CreateGroup(Group group, int uId)
         {
-            Course course = await _context.Courses.Include(c => c.Groups).FirstOrDefaultAsync(c => c.cId == group.CourseId);
+            Course course = await _context.Courses.Include(c => c.Groups).FirstOrDefaultAsync(c => c.Id == group.CourseId);
             if (course == null)
             {
                 return false;
@@ -44,7 +44,7 @@ namespace API.Data
 
         public async Task<bool> DeleteGroup(int gId, int uId)
         {
-            var group = await _context.Groups.Include(g => g.Teacher).FirstAsync(g => g.Teacher.UserId == uId && g.gId == gId);
+            var group = await _context.Groups.Include(g => g.Teacher).FirstAsync(g => g.Teacher.UserId == uId && g.Id == gId);
             if (group == null)
             {
                 return false;
@@ -58,10 +58,10 @@ namespace API.Data
         {
             var teacher = await GetTeacher(uId);
             return await (from g in _context.Groups
-                          where g.gId == gId && teacher.Id == g.TeacherId
+                          where g.Id == gId && teacher.Id == g.TeacherId
                           select new GroupDto()
                           {
-                              GId = g.gId,
+                              Id = g.Id,
                               GroupName = g.Group_name,
                               StartDate = g.Start_date,
                               EndDate = g.End_date,
@@ -71,18 +71,18 @@ namespace API.Data
                               TotalTime = g.TotalTime,
                               TotalSlot = g.Total_slot,
                               Lessons = (from l in g.Lessons
-                                         where l.groupId == g.gId
+                                         where l.groupId == g.Id
                                          orderby l.Order
                                          select new LessonDto()
                                          {
-                                             lId = l.lId,
+                                             Id = l.Id,
                                              Order = l.Order,
                                              Name = l.Name,
                                              Contents = (from ct in l.Contents
-                                                         where ct.LessonlId == l.lId
+                                                         where ct.LessonlId == l.Id
                                                          select new ContentDto()
                                                          {
-                                                             cId = ct.cId,
+                                                             Id = ct.Id,
                                                              Type = ct.Type,
                                                              Title = ct.Title,
                                                              Description = ct.Description
@@ -95,16 +95,16 @@ namespace API.Data
         {
             var teacher = await GetTeacher(uId);
             return await (from g in _context.Groups
-                          join c in _context.Courses on g.CourseId equals c.cId
+                          join c in _context.Courses on g.CourseId equals c.Id
                           where g.TeacherId == teacher.Id
                           select new CourseDto()
                           {
-                              cId = c.cId,
+                              Id = c.Id,
                               Name = c.Name,
                               Groups = (from g in c.Groups
                                         select new GroupDto()
                                         {
-                                            GId = g.gId,
+                                            Id = g.Id,
                                             GroupName = g.Group_name,
                                         }).ToList()
                           }).AsSingleQuery().ToArrayAsync();

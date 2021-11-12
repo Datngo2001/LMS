@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.DTOs;
 using API.Interfaces;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
@@ -15,8 +14,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using API.Extensions;
 using AutoMapper;
-using API.DTOs.DashBoardComponent;
-using API.DTOs.CourseComponent;
 
 namespace API.Controllers
 {
@@ -44,7 +41,7 @@ namespace API.Controllers
         }
         [Authorize(Policy = "All")]
         [HttpGet("mycourses")]
-        public async Task<ActionResult<IEnumerable<CourseCardDto>>> GetEnrolledCourse()
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetEnrolledCourse()
         {
             var rs = await _courseRepo.GetEnrolledCourse(User.GetUserId());
             return rs.ToArray();
@@ -54,7 +51,7 @@ namespace API.Controllers
         public async Task<ActionResult<CourseDto>> GetCourseOfGroup(int gId)
         {
             var uId = User.GetUserId();
-            bool isEnrolled = await _courseRepo.isEnrolled(uId, gId);
+            bool isEnrolled = await _courseRepo.isStudentEnrolled(uId, gId);
             if (isEnrolled)
             {
                 return await _courseRepo.LoadCourseContent(gId);
