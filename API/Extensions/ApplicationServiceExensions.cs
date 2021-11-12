@@ -17,9 +17,6 @@ namespace API.Extensions
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<ITokenService, TokenService>();
 
-            services.AddScoped<ICourseRepository, CourseRepository>();
-            services.AddScoped<IFacultyRepository, FacultyRepository>();
-            services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
             services.AddDbContext<DataContext>(option =>
             {

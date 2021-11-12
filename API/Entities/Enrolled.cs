@@ -5,11 +5,9 @@ namespace API.Entities
     public class Enrolled
     {
         public int Id { get; set; }
-
-        public Student Student { get; set; }
-        public int StudentId { get; set; }
-
-        public Group group { get; set; }
-        public int groupId { get; set; }
+        public AppUser appUser { get; set; }
+        public int appUserId { get; set; }
+        public Course course { get; set; }
+        public int courseId { get; set; }
     }
 }

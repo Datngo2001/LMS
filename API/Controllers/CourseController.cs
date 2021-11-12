@@ -18,48 +18,21 @@ using AutoMapper;
 namespace API.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    [Route("api/[controller]")]
     [ApiController]
     public class CourseController : APIController
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        public UserManager<AppUser> _userManager { get; }
-        private readonly ICourseRepository _courseRepo;
-        public CourseController(DataContext context, ICourseRepository courseRepository, UserManager<AppUser> userManager, IMapper mapper)
+        public CourseController(DataContext context, UserManager<AppUser> userManager, IMapper mapper)
         {
-            this._userManager = userManager;
             this._mapper = mapper;
             this._context = context;
-            this._courseRepo = courseRepository;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
             var rs = await _context.Courses.ToListAsync();
             return rs;
-        }
-        [Authorize(Policy = "All")]
-        [HttpGet("mycourses")]
-        public async Task<ActionResult<IEnumerable<CourseDto>>> GetEnrolledCourse()
-        {
-            var rs = await _courseRepo.GetEnrolledCourse(User.GetUserId());
-            return rs.ToArray();
-        }
-        [Authorize(Policy = "All")]
-        [HttpGet("course")]
-        public async Task<ActionResult<CourseDto>> GetCourseOfGroup(int gId)
-        {
-            var uId = User.GetUserId();
-            bool isEnrolled = await _courseRepo.isStudentEnrolled(uId, gId);
-            if (isEnrolled)
-            {
-                return await _courseRepo.LoadCourseContent(gId);
-            }
-            else
-            {
-                return BadRequest("You have not taken this course yet");
-            }
         }
     }
 }
