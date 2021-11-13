@@ -27,5 +27,4 @@ export class ConfirmDialogComponent implements OnInit {
     this.result = false;
     this.bsModalRef.hide();
   }
-
 }

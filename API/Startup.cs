@@ -6,6 +6,8 @@ using API.Extensions;
 using API.MiddleWares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +52,7 @@ namespace API
             }
 
             app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<MaxUploadMiddleware>();
 
             app.UseHttpsRedirection();
 

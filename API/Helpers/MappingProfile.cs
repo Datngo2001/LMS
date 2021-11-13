@@ -22,6 +22,9 @@ namespace API.Helpers
                 .ForMember(dest => dest.TeacherName, opt => opt.MapFrom(src => src.Teacher.UserName));
             CreateMap<Lesson, LessonDto>()
                 .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.Video.Url));
+            CreateMap<CreateLessonDto, Lesson>();
+            CreateMap<UpdateLessonDto, Lesson>();
+            CreateMap<Video, VideoDto>();
         }
     }
 }

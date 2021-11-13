@@ -19,20 +19,42 @@ using Microsoft.AspNetCore.Http;
 namespace API.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    [ApiController]
     public class CourseController : APIController
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        private readonly IPhotoService _photoService;
+        private readonly IUploadService _uploadService;
         private readonly UserManager<AppUser> _userManager;
 
-        public CourseController(DataContext context, UserManager<AppUser> userManager, IMapper mapper, IPhotoService photoService)
+        public CourseController(DataContext context, UserManager<AppUser> userManager, IMapper mapper, IUploadService photoService)
         {
             this._mapper = mapper;
-            this._photoService = photoService;
+            this._uploadService = photoService;
             this._context = context;
             this._userManager = userManager;
+        }
+
+        [HttpGet("{cId}")]
+        public async Task<ActionResult<CourseDto>> GetCourseContent(int cId)
+        {
+            int userId = User.GetUserId();
+
+            var isEnrolled = await _context.Enrolleds.AnyAsync(e => e.appUserId == userId && e.courseId == cId);
+            if (!isEnrolled)
+            {
+                return BadRequest("Your don't have this course");
+            }
+
+            var course = await _context.Courses
+                .Include(c => c.Photo)
+                .Include(c => c.Teacher)
+                .Include(c => c.Lessons)
+                    .ThenInclude(l => l.Video)
+                .FirstAsync();
+
+            var courseDto = _mapper.Map<CourseDto>(course);
+
+            return courseDto;
         }
 
         [HttpGet("cards")]
@@ -52,7 +74,6 @@ namespace API.Controllers
             return courseCards;
         }
 
-        [AllowAnonymous]
         [HttpGet("enrollecards")]
         public async Task<ActionResult<IEnumerable<CourseCardDto>>> GetEnrolleCard()
         {
@@ -64,7 +85,6 @@ namespace API.Controllers
 
             return courseCards;
         }
-
 
         [Authorize(Policy = "TeacherAdminRole")]
         [HttpPost("createcourse")]
@@ -87,7 +107,7 @@ namespace API.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok("Course " + course.Name + " created by " + user.UserName);
+            return Ok();
         }
 
         [Authorize(Policy = "TeacherAdminRole")]
@@ -106,7 +126,7 @@ namespace API.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok("Course edited.");
+            return Ok();
         }
 
         [Authorize(Policy = "TeacherAdminRole")]
@@ -120,14 +140,14 @@ namespace API.Controllers
                 return BadRequest("Invalid user");
             }
 
-            Course course = await _context.Courses.Include(c => c.Photo).FirstOrDefaultAsync(c => c.Id == cid);
+            Course course = await _context.Courses.Include(c => c.Photo).FirstAsync(c => c.Id == cid);
 
             if (course.Photo != null)
             {
-                await _photoService.DeletePhotoAsync(course.Photo.PublicId);
+                await _uploadService.DeleteAsync(course.Photo.PublicId);
             }
 
-            var result = await _photoService.AddPhotoAsync(file);
+            var result = await _uploadService.AddPhotoAsync(file);
             if (result.Error != null) return BadRequest(result.Error.Message);
             var photo = new Photo
             {
@@ -152,12 +172,17 @@ namespace API.Controllers
                 return BadRequest("Invalid user");
             }
 
-            Course course = await _context.Courses.FindAsync(cid);
+            Course course = await _context.Courses.Include(c => c.Photo).FirstAsync(c => c.Id == cid);
+
+            if (course.Photo != null)
+            {
+                await _uploadService.DeleteAsync(course.Photo.PublicId);
+            }
 
             _context.Courses.Remove(course);
             await _context.SaveChangesAsync();
 
-            return Ok("Course Deleted");
+            return Ok();
         }
     }
 }

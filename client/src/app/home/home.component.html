@@ -16,7 +16,8 @@
                     <h4 class="card-title"><a routerLink="" class="text-reset">{{card.name}}</a></h4>
                     <p class="card-text">{{card.teacherName}}</p>
                     <p class="card-text">{{card.description}}</p>
-                    <button type="button" class="btn btn-outline-success">Enrolle</button>
+                    <button type="button" class="btn btn-outline-success"
+                        (click)="enrollClick(card.id)">Enrolle</button>
                 </div>
             </div>
         </ng-container>

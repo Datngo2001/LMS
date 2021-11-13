@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace API.Interfaces
 {
-    public interface IPhotoService
+    public interface IUploadService
     {
         Task<ImageUploadResult> AddPhotoAsync(IFormFile file);
-        Task<DeletionResult> DeletePhotoAsync(string publicId);
+        Task<VideoUploadResult> AddVideoAsync(IFormFile file);
+        Task<DeletionResult> DeleteAsync(string publicId);
     }
 }

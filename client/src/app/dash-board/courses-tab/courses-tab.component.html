@@ -1,15 +1,11 @@
 <div class="d-flex flex-wrap pt-3 pb-3">
-  <div class="row">
-    <ng-container *ngFor="let card of cards">
-      <div class="col-4">
-        <div class="card bg-light mb-3 shadow-sm ">
-          <img src="{{card.imageUrl}}" class="rounded m-1" alt="...">
-          <div class="card-body">
-            <h6 class="card-title"><a routerLink="" class="text-reset stretched-link">{{card.name}}</a></h6>
-            <p class="card-text">{{card.teacherName}}</p>
-          </div>
-        </div>
+  <ng-container *ngFor="let card of cards">
+    <div class="card bg-light mb-3 shadow-sm mr-3">
+      <img src="{{card.imageUrl}}" class="rounded m-1" alt="...">
+      <div class="card-body">
+        <h6 class="card-title"><a routerLink="" class="text-reset stretched-link">{{card.name}}</a></h6>
+        <p class="card-text">{{card.teacherName}}</p>
       </div>
-    </ng-container>
-  </div>
+    </div>
+  </ng-container>
 </div>
