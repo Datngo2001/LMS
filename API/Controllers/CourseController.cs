@@ -50,7 +50,7 @@ namespace API.Controllers
                 .Include(c => c.Teacher)
                 .Include(c => c.Lessons)
                     .ThenInclude(l => l.Video)
-                .FirstAsync();
+                .FirstAsync(c => c.Id == cId);
 
             var courseDto = _mapper.Map<CourseDto>(course);
 

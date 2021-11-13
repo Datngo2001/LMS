@@ -22,7 +22,6 @@ export class DashBoardComponent implements OnInit {
   loadCourseCard() {
     this.courseService.CourseCard().subscribe(cards => {
       this.courseCards = cards;
-      console.log(this.courseCards)
     })
   }
 }

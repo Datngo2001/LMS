@@ -19,10 +19,10 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
-      { path: 'dashboard', component: DashBoardComponent},
-      { path: 'course/:name/:gid', component: CourseComponent },
-      { path: 'profile', component: ProfileComponent},
+      { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
+      { path: 'dashboard', component: DashBoardComponent },
+      { path: 'course/:id', component: CourseComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'teacher', component: TeacherPanelComponent },
     ]
   },

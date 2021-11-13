@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
   loadCourseCard() {
     this.courseService.CourseEnrolleCard().subscribe(cards => {
       this.enrolleCards = cards;
-      console.log(this.enrolleCards)
     })
   }
 

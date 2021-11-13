@@ -119,7 +119,7 @@ namespace API.Controllers
         }
 
         [Authorize(Policy = "TeacherAdminRole")]
-        [HttpPost("deletelesson/{cid}/{lid}")]
+        [HttpGet("deletelesson/{cid}/{lid}")]
         public async Task<ActionResult> DeleteCourse(int cid, int lid)
         {
             int userId = User.GetUserId();
