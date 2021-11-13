@@ -8,8 +8,6 @@ import { ServerErrrorComponent } from './errors/server-errror/server-errror.comp
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SubmitComponent } from './submit/submit.component';
-import { CourseDetailComponent } from './teacher-panel/course-detail/course-detail.component';
 import { TeacherPanelComponent } from './teacher-panel/teacher-panel.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
@@ -23,11 +21,9 @@ const routes: Routes = [
     children: [
       { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
       { path: 'dashboard', component: DashBoardComponent},
-      { path: 'submit', component: SubmitComponent },
       { path: 'course/:name/:gid', component: CourseComponent },
       { path: 'profile', component: ProfileComponent},
       { path: 'teacher', component: TeacherPanelComponent },
-      { path: 'teacher/class/:id', component: CourseDetailComponent },
     ]
   },
 

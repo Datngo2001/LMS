@@ -20,9 +20,5 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.courseService.LoadCourseContent(this.gid).subscribe(c => {
-      this.course = c
-      console.log(this.course)
-    })
   }
 }

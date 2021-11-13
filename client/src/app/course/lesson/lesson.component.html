@@ -6,20 +6,4 @@
             &#9660;
         </span>
     </button>
-    <div class="list-group">
-        <ng-container *ngFor="let content of lesson.contents">
-            <ng-container *ngIf="content.type == 'video'">
-                <app-video-type [content]="content"></app-video-type>
-            </ng-container>
-            <ng-container *ngIf="content.type == 'file'">
-                <app-file-type [content]="content"></app-file-type>
-            </ng-container>
-            <ng-container *ngIf="content.type == 'message'">
-                <app-message-type [content]="content"></app-message-type>
-            </ng-container>
-            <ng-container *ngIf="content.type == 'assignment'">
-                <app-assignment-type [content]="content"></app-assignment-type>
-            </ng-container>
-        </ng-container>
-    </div>
 </accordion-group>

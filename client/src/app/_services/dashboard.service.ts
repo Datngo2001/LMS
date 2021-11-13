@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Course } from '../_model/Course';
+import { CourseCard } from '../_model/CourseCard';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,13 +15,7 @@ export class DashboardService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   CourseCard() {
-    return this.http.get<Course[]>(this.baseUrl + "course/mycourses/", httpOptions);
-  }
-  myClass() {
-    return this.http.get(this.baseUrl + "teacher/myclass", httpOptions);
-  }
-  classDetail(id: number) {
-    return this.http.get(this.baseUrl + "teacher/class/" + id, httpOptions);
+    return this.http.get<CourseCard[]>(this.baseUrl + "course/cards", httpOptions);
   }
 }
 

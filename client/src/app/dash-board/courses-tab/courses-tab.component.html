@@ -1,13 +1,12 @@
 <div class="d-flex flex-wrap pt-3 pb-3">
   <div class="row">
-    <ng-container *ngFor="let course of courses">
+    <ng-container *ngFor="let card of cards">
       <div class="col-4">
         <div class="card bg-light mb-3 shadow-sm ">
-          <img src="assets/course.png" class="card-img-top" alt="...">
+          <img src="{{card.imageUrl}}" class="rounded m-1" alt="...">
           <div class="card-body">
-            <h6 class="card-title"><a routerLink="/course/{{course.name}}/{{course.groups[0].id}}"
-                class="text-reset stretched-link">{{course.name}}</a></h6>
-            <p class="card-text">{{course.groups[0].groupName}}</p>
+            <h6 class="card-title"><a routerLink="" class="text-reset stretched-link">{{card.name}}</a></h6>
+            <p class="card-text">{{card.teacherName}}</p>
           </div>
         </div>
       </div>

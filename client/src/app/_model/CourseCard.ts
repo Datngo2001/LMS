@@ -1,4 +1,4 @@
-export interface Course {
+export interface CourseCard {
     id: number
     name: string
     description: string

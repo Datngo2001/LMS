@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Course } from 'src/app/_model/Course';
+import { CourseCard } from 'src/app/_model/CourseCard';
 import { DashboardService } from 'src/app/_services/dashboard.service';
 
 @Component({
@@ -10,18 +10,10 @@ import { DashboardService } from 'src/app/_services/dashboard.service';
   styleUrls: ['./courses-tab.component.css']
 })
 export class CoursesTabComponent implements OnInit {
-  id: number;
-  courses: Partial<Course[]>;
+  @Input() cards: CourseCard[];
 
-  constructor(private dashService: DashboardService, private http: HttpClient, private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.loadMyCourse();
-  }
-  loadMyCourse() {
-    this.dashService.CourseCard().subscribe(courses => {
-      this.courses = courses;
-      console.log(this.courses)
-    })
   }
 }

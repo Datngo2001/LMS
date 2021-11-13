@@ -8,4 +8,17 @@
             <button class="btn btn-info btn-lg">Learn more</button>
         </div>
     </div>
+    <div *ngIf="(currentUser$ | async)" class="w-100 mt-3 d-flex justify-content-around flex-wrap">
+        <ng-container *ngFor="let card of enrolleCards">
+            <div class="card bg-light mb-3 shadow-sm d-flex flex-row">
+                <img src="{{card.imageUrl}}" class="rounded m-1" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title"><a routerLink="" class="text-reset">{{card.name}}</a></h4>
+                    <p class="card-text">{{card.teacherName}}</p>
+                    <p class="card-text">{{card.description}}</p>
+                    <button type="button" class="btn btn-outline-success">Enrolle</button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
 </div>

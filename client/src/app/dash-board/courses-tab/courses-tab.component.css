@@ -1,4 +1,11 @@
-
+.card{
+    min-width: 220px;
+    height: auto;
+}
+.card img{
+    min-width: 200px;
+    min-height: 200px;
+}
 
 /*########## mobile responsive ########*/
 @media(max-width: 600px){

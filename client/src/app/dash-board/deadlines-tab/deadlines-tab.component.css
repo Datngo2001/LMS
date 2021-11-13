@@ -1,6 +1,0 @@
-/*########## mobile responsive ########*/
-@media(max-width: 600px){
-    #hideInMobile{
-        display: none;
-    }
-}

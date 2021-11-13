@@ -4,13 +4,7 @@
             <ng-template tabHeading>
                 <h4 class="">Courses</h4>
             </ng-template>
-            <app-courses-tab></app-courses-tab>
-        </tab>
-        <tab>
-            <ng-template tabHeading>
-                <h4 class="">Deadlines</h4>
-            </ng-template>
-            <app-deadlines-tab></app-deadlines-tab>
+            <app-courses-tab [cards]="courseCards"></app-courses-tab>
         </tab>
     </tabset>
     <div class="row notice">
