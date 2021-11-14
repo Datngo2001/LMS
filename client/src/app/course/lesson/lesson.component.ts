@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { LessonVideoModalComponent } from 'src/app/modals/lesson-video-modal/lesson-video-modal.component';
 import { UpdateLessonModalComponent } from 'src/app/modals/update-lesson-modal/update-lesson-modal.component';
 import { Lesson } from 'src/app/_model/Lesson';
@@ -51,6 +51,13 @@ export class LessonComponent implements OnInit {
   }
 
   openVideoModal() {
-    this.videoModal = this.modalService.show(LessonVideoModalComponent);
+    const config: ModalOptions = {
+      initialState: {
+        lId: this.lesson.id,
+        cId: this.lesson.courseId
+      },
+      class: 'modal-lg p-2'
+    }
+    this.videoModal = this.modalService.show(LessonVideoModalComponent, config);
   }
 }

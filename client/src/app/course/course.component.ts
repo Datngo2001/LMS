@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { CourseImageModalComponent } from '../modals/course-image-modal/course-image-modal.component';
 import { CreateLessonModalComponent } from '../modals/create-lesson-modal/create-lesson-modal.component';
 import { UpdateCourseModalComponent } from '../modals/update-course-modal/update-course-modal.component';
@@ -64,7 +64,13 @@ export class CourseComponent implements OnInit {
   }
 
   openImageModal() {
-    this.imageModal = this.modalService.show(CourseImageModalComponent);
+    const config: ModalOptions = {
+      initialState: {
+        cId: this.cId
+      },
+      class: 'modal-lg p-2'
+    }
+    this.imageModal = this.modalService.show(CourseImageModalComponent, config);
   }
 
   openLessonModal() {

@@ -9,10 +9,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
 // Toaster: https://www.npmjs.com/package/ngx-toastr
 import { ToastrModule } from 'ngx-toastr';
-// Infinite Scroll: https://www.npmjs.com/package/ngx-infinite-scroll
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-// FileUploadModule: https://www.npmjs.com/package/@iplab/ngx-file-upload
-import { FileUploadModule } from '@iplab/ngx-file-upload';
+
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -28,7 +26,6 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    InfiniteScrollModule,
     FileUploadModule
   ],
   exports: [
@@ -39,7 +36,6 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
     AccordionModule,
     ModalModule,
     ToastrModule,
-    InfiniteScrollModule,
     FileUploadModule
   ]
 })
