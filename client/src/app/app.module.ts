@@ -31,6 +31,12 @@ import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.c
 import { SharedModule } from './_modules/shared.module';
 import { RegisterComponent } from './modals/register/register.component';
 import { IframeAutoHeightDirective } from './_directive/iframe-auto-heigh.directive';
+import { CreateCourseModalComponent } from './modals/create-course-modal/create-course-modal.component';
+import { UpdateCourseModalComponent } from './modals/update-course-modal/update-course-modal.component';
+import { CourseImageModalComponent } from './modals/course-image-modal/course-image-modal.component';
+import { CreateLessonModalComponent } from './modals/create-lesson-modal/create-lesson-modal.component';
+import { UpdateLessonModalComponent } from './modals/update-lesson-modal/update-lesson-modal.component';
+import { LessonVideoModalComponent } from './modals/lesson-video-modal/lesson-video-modal.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +61,13 @@ import { IframeAutoHeightDirective } from './_directive/iframe-auto-heigh.direct
     RolesModalComponent,
     ConfirmDialogComponent,
     RegisterComponent,
-    IframeAutoHeightDirective
+    IframeAutoHeightDirective,
+    CreateCourseModalComponent,
+    UpdateCourseModalComponent,
+    CourseImageModalComponent,
+    CreateLessonModalComponent,
+    UpdateLessonModalComponent,
+    LessonVideoModalComponent
   ],
   imports: [
     BrowserModule,

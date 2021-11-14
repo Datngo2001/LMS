@@ -1,9 +1,11 @@
+<button type="button" class="btn btn-success m-1" *appHasRole='["Teacher"]'>Add new course</button>
 <div class="d-flex flex-wrap pt-3 pb-3">
   <ng-container *ngFor="let card of cards">
     <div class="card bg-light mb-3 shadow-sm mr-3">
       <img src="{{card.imageUrl}}" class="img-thumbnail rounded m-1" alt="...">
       <div class="card-body">
-        <h6 class="card-title"><a routerLink="/course/{{card.id}}" class="text-reset stretched-link">{{card.name}}</a></h6>
+        <h6 class="card-title"><a routerLink="/course/{{card.id}}" class="text-reset stretched-link">{{card.name}}</a>
+        </h6>
         <p class="card-text">{{card.teacherName}}</p>
       </div>
     </div>
