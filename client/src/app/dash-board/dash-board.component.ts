@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseCard } from '../_model/CourseCard';
 import { CourseService } from '../_services/course.service';
-import { DashboardService } from '../_services/dashboard.service';
 
 @Component({
   selector: 'app-dash-board',

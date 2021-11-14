@@ -10,15 +10,21 @@ import { CourseService } from '../_services/course.service';
 })
 export class CourseComponent implements OnInit {
 
-  gid: string;
-  name: string;
+  cId: string
   course: Partial<Course>
 
   constructor(private courseService: CourseService, private route: ActivatedRoute) {
-    this.name = this.route.snapshot.paramMap.get('name');
-    this.gid = this.route.snapshot.paramMap.get('gid');
+    this.cId = this.route.snapshot.paramMap.get('id')
   }
 
   ngOnInit(): void {
+    this.getContent(this.cId)
+  }
+
+  getContent(cId: string) {
+    this.courseService.GetContent(cId).subscribe(content => {
+      this.course = content
+      this.course.lessons?.sort((a, b) => a.order - b.order)
+    })
   }
 }

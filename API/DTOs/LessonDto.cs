@@ -11,6 +11,6 @@ namespace API.DTOs
         public int Order { get; set; }
         public string Name { get; set; }
         public int courseId { get; set; }
-        public string VideoUrl { get; set; }
+        public string VideoPublicId { get; set; }
     }
 }

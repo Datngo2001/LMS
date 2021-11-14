@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:5001/api/',
-  apiUrl1: 'https://localhost:44375/api/'
+  apiUrl1: 'https://localhost:44375/api/',
+  cloudName: 'dxps1j39b'
 };
 
 /*

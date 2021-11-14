@@ -30,6 +30,7 @@ import { LoginComponent } from './modals/login/login.component';
 import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
 import { SharedModule } from './_modules/shared.module';
 import { RegisterComponent } from './modals/register/register.component';
+import { IframeAutoHeightDirective } from './_directive/iframe-auto-heigh.directive';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RegisterComponent } from './modals/register/register.component';
     UserManagementComponent,
     RolesModalComponent,
     ConfirmDialogComponent,
-    RegisterComponent
+    RegisterComponent,
+    IframeAutoHeightDirective
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 export interface Lesson {
-    Id: number
-    Order: number
-    Name: string
+    id: number
+    order: number
+    name: string
     courseId: number
-    VideoUrl: string
+    videoPublicId: string
 }
