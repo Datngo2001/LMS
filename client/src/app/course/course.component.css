@@ -15,24 +15,23 @@ h6{
     border-radius: 10px;
     background-image: url("../../assets/courseTitle.png");
 }
-.title .cover-image{
+.title .thump-image{
+    height: 100%;
+    width: auto;
+}
+.title .info{
     width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 .title .name{
-    position: absolute;
-    top: 15px;
-    left: 16px;
+    display: block;
     color: white;
     padding: 5px 50px;
     word-wrap: normal;
-    max-width: 70%;
+    width: fit-content !important;
+    max-width: 100%;
 }
-.title .info{
-    position: absolute;
-    top: 80px;
-    left: 16px;
+
+.title .detail{
     max-width: 70%;
 }
 

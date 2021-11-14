@@ -1,8 +1,12 @@
-<div class="title mt-1 mb-2">
-    <img class="thump-image" src="{{course.imageUrl}}" alt="" srcset="">
-    <h2 class="name bg-success rounded">{{course.name}}</h2>
+<div class="title mt-1 mb-2 d-flex align-items-center">
+    <div class="thump-image">
+        <img class="rounded p-2" src="{{course.imageUrl}}" alt="" srcset="">
+    </div>
     <div class="info">
-        <span class="badge bg-info mr-1">Teacher: {{course.teacherName}}</span>
+        <h2 class="name bg-success rounded">{{course.name}}</h2>
+        <div class="detail">
+            <span class="badge bg-info mr-1">Teacher: {{course.teacherName}}</span>
+        </div>
     </div>
 </div>
 <tabset class="row flex-grow-1 courseAndDeadline mx-1" [justified]="true">
@@ -12,7 +16,7 @@
         </ng-template>
         <accordion class="courseContent" [isAnimated]="true">
             <ng-container *ngFor="let lesson of course.lessons">
-                <app-lesson [lesson]="lesson"></app-lesson>     
+                <app-lesson [lesson]="lesson"></app-lesson>
             </ng-container>
         </accordion>
     </tab>
