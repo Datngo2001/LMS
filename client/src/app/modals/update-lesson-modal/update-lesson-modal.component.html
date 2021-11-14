@@ -1,1 +1,17 @@
-<p>update-lesson-modal works!</p>
+<div class="modal-header">
+    <h3 class="m-auto">Update Lesson</h3>
+</div>
+<div class="modal-body">
+    <form #loginForm="ngForm" class="" (ngSubmit)="update()" autocomplete="off">
+        <div class="form-group">
+            <input name="order" [(ngModel)]="model.order" class="form-control" type="text" placeholder="Order">
+        </div>
+        <div class="form-group">
+            <input name="name" [(ngModel)]="model.name" class="form-control" type="text" placeholder="Lesson Name">
+        </div>
+        <div class="form-group text-center">
+            <button class="btn btn-success" type="submit">Save Change</button>
+            <button class="btn btn-default" (click)="cancel()" type="button">Cancel</button>
+        </div>
+    </form>
+</div>
