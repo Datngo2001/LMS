@@ -7,8 +7,10 @@
         <div class="detail">
             <span class="badge bg-info mr-1">Teacher: {{course.teacherName}}</span>
         </div>
-        <button type="button" class="btn btn-success m-1" *appHasRole='["Teacher"]'>Update course</button>
-        <button type="button" class="btn btn-info m-1" *appHasRole='["Teacher"]'>Update course image</button>
+        <button type="button" class="btn btn-success m-1" *appHasRole='["Teacher"]' (click)="openUpdateModal()">Update
+            course</button>
+        <button type="button" class="btn btn-info m-1" *appHasRole='["Teacher"]' (click)="openImageModal()">Update
+            course image</button>
     </div>
 </div>
 <tabset class="row flex-grow-1 courseAndDeadline mx-1" [justified]="true">

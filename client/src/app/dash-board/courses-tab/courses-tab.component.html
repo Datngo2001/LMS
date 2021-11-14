@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-success m-1" *appHasRole='["Teacher"]'>Add new course</button>
+<button type="button" class="btn btn-success m-1" *appHasRole='["Teacher"]' (click)="openCreateModal()">Add new course</button>
 <div class="d-flex flex-wrap pt-3 pb-3">
   <ng-container *ngFor="let card of cards">
     <div class="card bg-light mb-3 shadow-sm mr-3">

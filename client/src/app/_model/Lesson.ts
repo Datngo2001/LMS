@@ -3,5 +3,5 @@ export interface Lesson {
     order: number
     name: string
     courseId: number
-    videoPublicId: string
+    videoPublicId?: string
 }

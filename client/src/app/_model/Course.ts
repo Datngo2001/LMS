@@ -3,8 +3,8 @@ import { Lesson } from "./Lesson";
 export interface Course {
     id: number
     name: string
-    description: string
+    description?: string
     teacherName: string
-    imageUrl: string
-    lessons: Lesson[]
+    imageUrl?: string
+    lessons?: Lesson[]
 }

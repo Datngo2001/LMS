@@ -13,8 +13,8 @@ export class LessonService {
   CreateLesson(createLesson: CreateLesson) {
     return this.http.post(this.baseUrl + "course/createlesson", createLesson);
   }
-  UpdateLesson(updateLesson: UpdateLesson) {
-    return this.http.post(this.baseUrl + "course/updatelesson", updateLesson);
+  UpdateLesson(lId: string, updateLesson: UpdateLesson) {
+    return this.http.post(this.baseUrl + "course/updatelesson/" + lId, updateLesson);
   }
   DeleteLesson(cId: string) {
     return this.http.get(this.baseUrl + "course/deletelesson/" + cId);

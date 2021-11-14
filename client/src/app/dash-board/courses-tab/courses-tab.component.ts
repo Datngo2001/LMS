@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CreateCourseModalComponent } from 'src/app/modals/create-course-modal/create-course-modal.component';
 import { CourseCard } from 'src/app/_model/CourseCard';
 
 @Component({
@@ -10,9 +12,13 @@ import { CourseCard } from 'src/app/_model/CourseCard';
 })
 export class CoursesTabComponent implements OnInit {
   @Input() cards: CourseCard[];
+  createModal?: BsModalRef;
 
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
+  }
+  openCreateModal() {
+    this.createModal = this.modalService.show(CreateCourseModalComponent);
   }
 }

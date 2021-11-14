@@ -26,8 +26,8 @@ export class CourseService {
   CreateCrouse(createCourse: CreateCourse) {
     return this.http.post(this.baseUrl + "course/createcourse", createCourse);
   }
-  UpdateCrouse(updateCourse: UpdateCourse) {
-    return this.http.post(this.baseUrl + "course/updatecourse", updateCourse);
+  UpdateCrouse(cId: string, updateCourse: UpdateCourse) {
+    return this.http.post(this.baseUrl + "course/updatecourse/" + cId, updateCourse);
   }
   DeleteCrouse(cId: string) {
     return this.http.get(this.baseUrl + "course/deletecourse/" + cId);

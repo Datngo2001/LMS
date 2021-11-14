@@ -16,6 +16,7 @@ export class ConfirmService {
     message = 'Are you sure?',
     btnOkText = 'Ok',
     btnCancelText = 'cancel'): Observable<Boolean> {
+      
     const config = {
       initialState: {
         title,
