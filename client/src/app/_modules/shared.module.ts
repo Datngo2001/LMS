@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    FileUploadModule
+    FileUploadModule,
+    NgxSpinnerModule,
   ],
   exports: [
     BsDropdownModule,
@@ -36,7 +38,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     AccordionModule,
     ModalModule,
     ToastrModule,
-    FileUploadModule
+    FileUploadModule,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }

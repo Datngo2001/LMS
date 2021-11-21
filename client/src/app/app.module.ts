@@ -37,6 +37,7 @@ import { CourseImageModalComponent } from './modals/course-image-modal/course-im
 import { CreateLessonModalComponent } from './modals/create-lesson-modal/create-lesson-modal.component';
 import { UpdateLessonModalComponent } from './modals/update-lesson-modal/update-lesson-modal.component';
 import { LessonVideoModalComponent } from './modals/lesson-video-modal/lesson-video-modal.component';
+import { LoadingInterceptor } from './_interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { LessonVideoModalComponent } from './modals/lesson-video-modal/lesson-vi
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
