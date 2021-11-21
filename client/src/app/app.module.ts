@@ -38,6 +38,7 @@ import { CreateLessonModalComponent } from './modals/create-lesson-modal/create-
 import { UpdateLessonModalComponent } from './modals/update-lesson-modal/update-lesson-modal.component';
 import { LessonVideoModalComponent } from './modals/lesson-video-modal/lesson-video-modal.component';
 import { LoadingInterceptor } from './_interceptor/loading.interceptor';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { LoadingInterceptor } from './_interceptor/loading.interceptor';
     CourseImageModalComponent,
     CreateLessonModalComponent,
     UpdateLessonModalComponent,
-    LessonVideoModalComponent
+    LessonVideoModalComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
